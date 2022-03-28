@@ -1,0 +1,31 @@
+@import url("variables.css");
+
+.navbar{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--darkslategray);
+}   
+.navbar .navbar-brand{
+    font-size: 36px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white;
+}
+
+.navbar-brand img{
+    margin-right: 1rem;
+}
+
+.navbar .navbar-nav .nav-link {
+    font-size: 1.175rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white;
+}
+
+.navbar-nav .nav-link:hover{
+    color: var(--orange);
+}

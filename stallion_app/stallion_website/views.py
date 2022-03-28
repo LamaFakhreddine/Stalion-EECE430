@@ -5,7 +5,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
-    return HttpResponse("HOME")
+    return render(request, 'stallion_website/index.html')
 
 def about(request):
     return HttpResponse("ABOUT US")
