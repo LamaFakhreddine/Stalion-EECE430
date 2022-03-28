@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-nihruidlm4j=73i=ank-79lt%xmc*c+b7ec($o=ak%09tqrx3s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'stallion_website'
 ]
 
 MIDDLEWARE = [
