@@ -1,6 +1,36 @@
 :root{
     --darkorange: #ff8614;
     --orange: #fda14b;
-    --darkslategray: #252525;
+    --darkslategray: #2c2a2a;
     --darkgrey: #424242;
+}
+
+.primary-btn-stallion{
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem ;
+    background-color: var(--darkorange);
+    border:2px solid var(--darkorange);
+    box-shadow: 0 10px 10px #00000060
+}  
+   
+.primary-btn-stallion:hover{
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+
+.secondary-btn-stallion{
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem ;
+    background-color: transparent;
+    color: var(--darkorange);
+    border:2px solid var(--darkorange);
+    box-shadow: 0 10px 10px #00000060
+}
+
+.secondary-btn-stallion:hover{
+    background-color: var(--darkorange);
+    border-color: var(--darkorange);
+    color: white;
 }

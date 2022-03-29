@@ -4,7 +4,7 @@ footer{
     background-color: var(--darkslategray) ;
 }
 
-.btn{
+footer .btn{
     background-color: transparent;
     border: 2px solid white;
     border-radius: 60%;
@@ -12,7 +12,7 @@ footer{
     height: 40px;
 }
 
-.btn:hover{
+footer .btn:hover{
     background-color: var(--darkorange);
     border-color: var(--darkorange)
 }
