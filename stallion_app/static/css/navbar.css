@@ -6,7 +6,7 @@
     background-color: var(--darkslategray);
 }   
 .navbar .navbar-brand{
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@
 }
 
 .navbar .navbar-nav .nav-link {
-    font-size: 1rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     height: 100%;
