@@ -15,6 +15,7 @@
     
     {% include 'stallion_website/navbar.html' %}
 
+    <!-- Bootstrap Carousel -->
     <section>
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -58,6 +59,52 @@
             </button>
           </div>
     </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="container">
+        <div class="row">
+            <h1>Our Programs</h1>
+            <div class="col">COL</div>
+            <div class="col-8">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                      <div class="card h-100 program-card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Men's Volleyball</h5>
+                          <div class="card-text"><i class="bi bi-person-fill"></i> Coach Sam Reiss</div>
+                          <div class="card-text"><i class="bi bi-clock-fill"></i> 12 pm - 2 pm Sat Sun</div>
+                          <button type="button" class="btn btn-primary secondary-btn-stallion-sm mt-auto">View Program</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card h-100 program-card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Women's Basketball</h5>
+                          <div class="card-text"><i class="bi bi-person-fill"></i> Coach Natasha Romanov</div>
+                          <div class="card-text"><i class="bi bi-clock-fill"></i> 2:30 pm - 4:30 pm Fri Sat Sun</div>
+                          <button type="button" class="btn btn-primary secondary-btn-stallion-sm mt-auto">View Program</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card h-100 program-card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">MMA</h5>
+                          <div class="card-text"><i class="bi bi-person-fill"></i> Coach Tony Stark</div>
+                          <div class="card-text"><i class="bi bi-clock-fill"></i> 5 pm - 6:30 pm Mon Wed Fri</div>
+                          <button type="button" class="btn btn-primary secondary-btn-stallion-sm mt-auto">View Program</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+
     <h2>Programs</h2>
     <h2>Events</h2>
     {% include 'stallion_website/footer.html' %}

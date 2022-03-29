@@ -10,6 +10,14 @@ html, body{
     color: #d6d6d6a1
 }
 
+h1 {
+    padding-bottom: 1.5rem;
+    font-size: 2.25rem;
+    color: var(--darkorange);
+    width: fit-content;
+    border-bottom: 5px double #ff8c009c;
+}
+
 /* CAROUSEL */
 
 .carousel {
@@ -38,5 +46,15 @@ html, body{
 .carousel-caption p {
     font-size: 1.75rem;
     margin: 3.25rem 0; 
+}
+
+/* PROGRAMS */
+
+#programs {
+    padding: 2.75rem 6.25rem;
+}
+
+.program-card .card-body .card-text{
+    color: var(--darkorange);
 }
 
