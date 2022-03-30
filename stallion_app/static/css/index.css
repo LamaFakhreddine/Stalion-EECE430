@@ -55,7 +55,7 @@ h1 {
     margin:0; 
 }
 #nextEvent{
-    height: 450px;
+    height: 500px;
     background-color: var(--white);
     padding: 2.75rem 6.25rem ;
 }
@@ -64,7 +64,7 @@ h1 {
     position: absolute;
     font-size: 128px;
     text-transform: uppercase;
-    color: rgba(150, 150, 150, 0.363);
+    color: #9696964d;
     font-weight: 800;
     text-align: center;
     border: none;
@@ -76,7 +76,7 @@ h1 {
     color: var(--darkgrey);
     text-transform: uppercase;
     letter-spacing: 0.15rem;
-    font-size: 2.25rem;
+    font-size: 2.2rem;
     text-align: center;
 }
 
@@ -97,8 +97,19 @@ h1 {
     font-size: 2.75rem;
     margin:0;
     padding: 0;
-
 }
+
+.event-info{
+    text-transform: uppercase;
+}
+
+.event-info i{
+    color: var(--darkorange);
+}
+
+.event-info > *:not(:last-child) {
+    margin-right: 1.5rem; 
+} 
 
 /* PROGRAMS */
 
