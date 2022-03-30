@@ -16,6 +16,7 @@ h1 {
     color: var(--darkorange);
     width: fit-content;
     border-bottom: 5px double #ff8c009c;
+    margin-bottom: 2rem;
 }
 
 /* CAROUSEL */
@@ -48,13 +49,42 @@ h1 {
     margin: 3.25rem 0; 
 }
 
+/* NEXT EVENT */
+
+#nextEvent.container{
+    width:100vh; 
+    margin:0; 
+}
+#nextEvent{
+    background-color: white;
+}
+
 /* PROGRAMS */
+
+.card-text{
+    display: flex;
+}
 
 #programs {
     padding: 2.75rem 6.25rem;
+    color: var(--darkslategray);
 }
 
-.program-card .card-body .card-text{
+.program-card{
+    box-shadow:  0 5px 7px #00000036;
+}
+.program-card .card-body .card-title{
+    color: var(--darkslategray);
+}
+
+.program-card .card-body .card-text i{
+    margin-right: 0.5rem;
     color: var(--darkorange);
+}
+
+#programs p{
+    margin: 2rem 2rem 2rem 0;
+    color: white;
+    font-size: 1.25rem;
 }
 

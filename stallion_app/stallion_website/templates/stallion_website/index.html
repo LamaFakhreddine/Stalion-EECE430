@@ -27,7 +27,7 @@
               <div id="carouselItem1" class="carousel-item active">
                 <img src="{% static '/images/player.jpg' %}" class="d-block w-100" alt="Player jpg">
                 <div class="carousel-caption d-md-block">
-                  <h5>Ready to Rumble</h5>
+                  <h5>Ready to Rumble!</h5>
                   <p>Elevate your skills to the next level. Become a stronger version of yourself.</p>
                   <button type="button" class="btn btn-primary primary-btn-stallion">Join Us</button>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Our Programs</h5>
                   <p>Stallion offers various sports programs for aspiring athletes.</p>
-                  <button type="button" class="btn btn-primary secondary-btn-stallion">View Programs</button>
+                  <button type="button" class="btn btn-primary secondary-btn-stallion">Explore Programs</button>
                 </div>
               </div>
               <div id="carouselItem3" class="carousel-item">
@@ -45,7 +45,7 @@
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Don't miss our next Event!</h5>
                   <p>Stallion's women volleyball team will be competing in the local volleyball tournament.</p>
-                  <button type="button" class="btn btn-primary primary-btn-stallion">Buy Tickets</button>
+                  <button type="button" class="btn btn-primary primary-btn-stallion">Buy Tickets Now!</button>
                 </div>
               </div>
             </div>
@@ -60,44 +60,65 @@
           </div>
     </section>
 
+    <section id="nextEvent" class="container-fluid">
+      <h2>Events</h2>
+    </section>
+
     <!-- Programs Section -->
-    <section id="programs" class="container">
+    <section id="programs" class="container-fluid">
         <div class="row">
-            <h1>Our Programs</h1>
-            <div class="col">COL</div>
-            <div class="col-8">
+            <div class="col">
+              <h1>Our Programs</h1>
+              <p>Stallion offers various sports programs for aspiring athletes and people seeking to pick up new hobbies. Check out more of our program below!</p>
+              <button type="button" class="btn btn-primary primary-btn-stallion mt-auto">Explore Programs</button>
+            </div>
+            <div class="col-7">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                       <div class="card h-100 program-card">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="{% static '/images/men-volleyball.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Men's Volleyball</h5>
-                          <div class="card-text"><i class="bi bi-person-fill"></i> Coach Sam Reiss</div>
-                          <div class="card-text"><i class="bi bi-clock-fill"></i> 12 pm - 2 pm Sat Sun</div>
-                          <button type="button" class="btn btn-primary secondary-btn-stallion-sm mt-auto">View Program</button>
+                          <div class="card-text">
+                            <i class="bi bi-person-fill"></i> 
+                            <div>Coach Sam Reiss</div>
+                          </div>
+                          <div class="card-text">
+                            <i class="bi bi-calendar-fill"></i>
+                            <div>12 pm - 2 pm S Su</div>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div class="col">
                       <div class="card h-100 program-card">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="{% static '/images/women-basketball.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Women's Basketball</h5>
-                          <div class="card-text"><i class="bi bi-person-fill"></i> Coach Natasha Romanov</div>
-                          <div class="card-text"><i class="bi bi-clock-fill"></i> 2:30 pm - 4:30 pm Fri Sat Sun</div>
-                          <button type="button" class="btn btn-primary secondary-btn-stallion-sm mt-auto">View Program</button>
+                          <div class="card-text">
+                            <i class="bi bi-person-fill"></i>
+                            <div>Coach Natasha Romanov</div>
+                          </div>
+                          <div class="card-text">
+                            <i class="bi bi-calendar-fill"></i>
+                            <div>2:30 pm - 4:30 pm F S Su</div>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div class="col">
                       <div class="card h-100 program-card">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="{% static '/images/mma.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">MMA</h5>
-                          <div class="card-text"><i class="bi bi-person-fill"></i> Coach Tony Stark</div>
-                          <div class="card-text"><i class="bi bi-clock-fill"></i> 5 pm - 6:30 pm Mon Wed Fri</div>
-                          <button type="button" class="btn btn-primary secondary-btn-stallion-sm mt-auto">View Program</button>
-                        </div>
+                          <div class="card-text">
+                            <i class="bi bi-person-fill"></i> 
+                            <div>Coach Tony Stark</div>
+                          </div>
+                          <div class="card-text">
+                            <i class="bi bi-calendar-fill"></i> 
+                            <div>5 pm - 6:30 pm M W F</div>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -105,8 +126,7 @@
         </div>
     </section>
 
-    <h2>Programs</h2>
-    <h2>Events</h2>
+
     {% include 'stallion_website/footer.html' %}
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

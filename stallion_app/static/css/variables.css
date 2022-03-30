@@ -11,7 +11,7 @@
     padding: 0.5rem 1.5rem ;
     background-color: var(--darkorange);
     border:2px solid var(--darkorange);
-    box-shadow: 0 5px 5px #00000060
+    box-shadow: 0 5px 5px #00000036
 }  
    
 .primary-btn-stallion:hover{
@@ -26,7 +26,7 @@
     background-color: transparent;
     color: var(--darkorange);
     border:2px solid var(--darkorange);
-    box-shadow: 0 5px 5px #00000060
+    box-shadow: 0 5px 5px #00000036
 }
 
 .secondary-btn-stallion:hover{
@@ -39,8 +39,8 @@
     font-weight: 600;
     background-color: transparent;
     color: var(--darkorange);
-    border:2px solid var(--darkorange);
-    box-shadow: 0 2px 5px #00000060
+    border:2px solid var(--darkorange);  
+    box-shadow: 0 2px 5px #00000036
 }
 
 .secondary-btn-stallion-sm:hover{
