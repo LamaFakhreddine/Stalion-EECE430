@@ -119,7 +119,7 @@ h1 {
     margin: 0;
     color: var(--darkslategray);
     color: var(--white);
-    height: 375px;
+    height: fit-content;
 }
 
 #programs .col{
@@ -136,17 +136,31 @@ h1 {
     border-color: var(--darkslategray);
     border-top: none;
 }
-
-.program-card .card-body .card-title{
-    margin: 0.75rem 0 1.5rem 0;
+.program-card .card-img-overlay{
+    text-align: center;
+    padding-top: 25%;
+    border-bottom: 7px solid #ff000000;
+}
+.program-card .card-img-overlay{
+    text-align: center;
+    padding: 25% 5%;
+    border-bottom: 7px solid #ff000000;
+}
+.program-card .card-img-overlay:hover{
+    border-bottom-color: var(--darkorange);
+    transition: 0.25s ease-in;
 }
 
-.program-card .card-body .card-text{
+.program-card .card-title{
+    margin: 20% 0;
+}
+
+.program-card .card-text{
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
-.program-card .card-body .card-text i{
+.program-card .card-text i{
     margin-right: 0.5rem;
     color: var(--darkorange);
 }
@@ -155,6 +169,10 @@ h1 {
     margin: 2rem 2rem 2rem 0;
     color: var(--white);
     font-size: 1.1rem;
+}
+
+.card-img-overlay{
+    background-color: rgba(0, 0, 0, 0.486);
 }
 
 /* ABOUT US */
@@ -171,7 +189,6 @@ h1 {
 
 #aboutUs i{
     margin: 0.75rem;
-    /* color: var(--darkorange); */
 }
 
 .about-title{
