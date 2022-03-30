@@ -1,63 +1,135 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Stallion Sports Club</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
     <!-- Bootstrap Font Icon CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/index.css' %}"
+    />
+  </head>
 
-</head>
-
-<body class="d-flex flex-column min-vh-100">
-    
+  <body class="d-flex flex-column min-vh-100">
     {% include 'stallion_website/navbar.html' %}
 
     <!-- Bootstrap Carousel -->
     <section>
-        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div id="carouselItem1" class="carousel-item active">
+            <img
+              src="{% static '/images/player.jpg' %}"
+              class="d-block w-100"
+              alt="Player jpg"
+            />
+            <div class="carousel-caption d-md-block">
+              <h5>Ready to Rumble!</h5>
+              <p>
+                Elevate your skills to the next level. Become a stronger version
+                of yourself.
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary primary-btn-stallion"
+              >
+                Join Us
+              </button>
             </div>
-            <div class="carousel-inner">
-              <div id="carouselItem1" class="carousel-item active">
-                <img src="{% static '/images/player.jpg' %}" class="d-block w-100" alt="Player jpg">
-                <div class="carousel-caption d-md-block">
-                  <h5>Ready to Rumble!</h5>
-                  <p>Elevate your skills to the next level. Become a stronger version of yourself.</p>
-                  <button type="button" class="btn btn-primary primary-btn-stallion">Join Us</button>
-                </div>
-              </div>
-              <div id="carouselItem2" class="carousel-item">
-                <img src="{% static '/images/basketball.jpg' %}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Our Programs</h5>
-                  <p>Stallion offers various sports programs for aspiring athletes.</p>
-                  <button type="button" class="btn btn-primary secondary-btn-stallion">Explore Programs</button>
-                </div>
-              </div>
-              <div id="carouselItem3" class="carousel-item">
-                <img src="{% static '/images/volleyball.jpg' %}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Don't miss our next Event!</h5>
-                  <p>Stallion's women volleyball team will be competing in the local volleyball tournament.</p>
-                  <button type="button" class="btn btn-primary primary-btn-stallion">Buy Tickets Now!</button>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
           </div>
+          <div id="carouselItem2" class="carousel-item">
+            <img
+              src="{% static '/images/basketball.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Our Programs</h5>
+              <p>
+                Stallion offers various sports programs for aspiring athletes.
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary secondary-btn-stallion"
+              >
+                Explore Programs
+              </button>
+            </div>
+          </div>
+          <div id="carouselItem3" class="carousel-item">
+            <img
+              src="{% static '/images/volleyball.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Don't miss our next Event!</h5>
+              <p>
+                Come watch our Stallion's women volleyball team compete at the
+                local volleyball tournament.
+              </p>
+              <button
+                type="button"
+                class="btn btn-primary primary-btn-stallion"
+              >
+                Buy Tickets Now!
+              </button>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </section>
 
     <!-- Next Event Section -->
@@ -65,20 +137,17 @@
       <div class="row justify-content-center">
         <h1>Next Event</h1>
         <div class="d-flex justify-content-center py-4">
-          <div class="counter-box"> 
+          <div class="counter-box">
             <div id="counter-days">01</div>
             <div>Days</div>
-            
           </div>
-          <div class="counter-box"> 
+          <div class="counter-box">
             <div id="counter-hours">01</div>
             <div>Hours</div>
-            
           </div>
           <div class="counter-box">
             <div id="counter-minutes">01</div>
             <div>Minutes</div>
-            
           </div>
           <div class="counter-box">
             <div id="counter-seconds">01</div>
@@ -87,7 +156,7 @@
         </div>
         <h3 class="">Women's Volleyball Local Tournament</h3>
         <div class="d-flex justify-content-center py-2 event-info">
-          <div style="margin-right:1.5rem">
+          <div style="margin-right: 1.5rem">
             <i class="bi bi-clock-fill"></i>
             <span>1 pm</span>
           </div>
@@ -98,89 +167,210 @@
         </div>
 
         <div class="d-flex justify-content-center py-4">
-          <button type="button" class="btn btn-primary primary-btn-stallion" width="175px" style="margin-right:1.5rem">Buy Tickets Now!</button>
-          <button type="button" class="btn btn-primary primary-btn-stallion" width="175px">View Event</button>
+          <button
+            type="button"
+            class="btn btn-primary primary-btn-stallion"
+            width="175px"
+            style="margin-right: 1.5rem"
+          >
+            Buy Tickets Now!
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary primary-btn-stallion"
+            width="175px"
+          >
+            View Event
+          </button>
         </div>
       </div>
     </section>
 
     <!-- Programs Section -->
     <section id="programs" class="container-fluid">
-        <div class="row">
-            <div class="col" style="background-color: var(--darkslategray)">
-              <h1>Our Programs</h1>
-              <p>Stallion offers various sports programs for aspiring athletes and people seeking to pick up new hobbies. Check out more of our program below!</p>
-              <button type="button" class="btn btn-primary secondary-btn-stallion mt-auto">Explore Programs</button>
-            </div>
-            <div class="col-6">
-                <div class="card-group  h-100">
-                  <div class="card program-card">
-                    <img src="{% static '/images/men-volleyball.jpg' %}" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Men's Volleyball</h5>
-                        <div class="card-text">
-                          <i class="bi bi-person-fill"></i> 
-                          <div>Coach Sam Reiss</div>
-                        </div>
-                        <div class="card-text">
-                          <i class="bi bi-calendar-fill"></i>
-                          <div>12 pm - 2 pm S Su</div>
-                        </div>
-                        <div class="card-text">
-                          <i class="bi bi-geo-alt-fill"></i>
-                          <div>Westward Building Court 1</div>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="card program-card">
-                      <img src="{% static '/images/women-basketball.jpg' %}" class="card-img-top" alt="...">
-
-                      <div class="card-body">
-                        <h5 class="card-title">Women's Basketball</h5>
-                        <div class="card-text">
-                          <i class="bi bi-person-fill"></i>
-                          <div>Coach Natasha Romanov</div>
-                        </div>
-                        <div class="card-text">
-                          <i class="bi bi-calendar-fill"></i>
-                          <div>2:30 pm - 4:30 pm F S Su</div>
-                        </div>
-                        <div class="card-text">
-                          <i class="bi bi-geo-alt-fill"></i>
-                          <div>Westward Building Court 2</div>
-                        </div>
-                      </div>
-
-                  </div>
-                  <div class="card program-card">
-                    <img src="{% static '/images/mma.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">MMA</h5>
-                      <div class="card-text">
-                        <i class="bi bi-person-fill"></i> 
-                        <div>Coach Tony Stark</div>
-                      </div>
-                      <div class="card-text">
-                        <i class="bi bi-calendar-fill"></i> 
-                        <div>5 pm - 6:30 pm M W F</div>
-                      </div>
-                      <div class="card-text">
-                        <i class="bi bi-geo-alt-fill"></i>
-                        <div>Charles Hostler Gym</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
+      <div class="row h-100">
+        <div class="col" style="background-color: var(--darkslategray)">
+          <h1>Our Programs</h1>
+          <p>
+            Stallion offers various sports programs for aspiring athletes and
+            people seeking to pick up new hobbies. Check out more of our program
+            below!
+          </p>
+          <button
+            type="button"
+            class="btn btn-primary secondary-btn-stallion mt-auto"
+          >
+            Explore Programs
+          </button>
         </div>
+        <div class="col-6">
+          <div class="card-group h-100">
+            <div class="card program-card">
+              <img
+                src="{% static '/images/men-volleyball.jpg' %}"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Men's Volleyball</h5>
+                <div class="card-text">
+                  <i class="bi bi-person-fill"></i>
+                  <div>Coach Sam Reiss</div>
+                </div>
+                <div class="card-text">
+                  <i class="bi bi-calendar-fill"></i>
+                  <div>12 pm - 2 pm S Su</div>
+                </div>
+                <div class="card-text">
+                  <i class="bi bi-geo-alt-fill"></i>
+                  <div>Westward Building Court 1</div>
+                </div>
+              </div>
+            </div>
+            <div class="card program-card">
+              <img
+                src="{% static '/images/women-basketball.jpg' %}"
+                class="card-img-top"
+                alt="..."
+              />
+
+              <div class="card-body">
+                <h5 class="card-title">Women's Basketball</h5>
+                <div class="card-text">
+                  <i class="bi bi-person-fill"></i>
+                  <div>Coach Natasha Romanov</div>
+                </div>
+                <div class="card-text">
+                  <i class="bi bi-calendar-fill"></i>
+                  <div>2:30 pm - 4:30 pm F S Su</div>
+                </div>
+                <div class="card-text">
+                  <i class="bi bi-geo-alt-fill"></i>
+                  <div>Westward Building Court 2</div>
+                </div>
+              </div>
+            </div>
+            <div class="card program-card">
+              <img
+                src="{% static '/images/mma.jpg' %}"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">MMA</h5>
+                <div class="card-text">
+                  <i class="bi bi-person-fill"></i>
+                  <div>Coach Tony Stark</div>
+                </div>
+                <div class="card-text">
+                  <i class="bi bi-calendar-fill"></i>
+                  <div>5 pm - 6:30 pm M W F</div>
+                </div>
+                <div class="card-text">
+                  <i class="bi bi-geo-alt-fill"></i>
+                  <div>Charles Hostler Gym</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- About Us Section -->
+    <section id="aboutUs" class="container-fluid">
+      <div class="row">
+        <div class="about-title">
+          <h1 class="mx-auto">Why Us</h1>
+          <p>
+            Wonder why people choose us? Our experienced coaches and
+            state-of-the-art sports fields are the winning combination.
+          </p>
+        </div>
+      </div>
+      <div class="row about-body">
+        
+        <div class="col-lg-4 col-sm-6">
+          <div>
+            <i class="fa-solid fa-people-group fa-2x"></i>
+            <h5>Our Coaches</h5>
+            <p>
+              The best way to improve is to learn from the experts. Having come from
+              years-long experience, our coaches are here to teach you how to break the chains of normal. 
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div>
+            <i class="fa-solid fa-person-running fa-2x"></i>
+            <h5>Weekly Trainings  </h5>
+            <p>
+              Our sports club is closer to an academy. Weekly trainings help you 
+              practice frequently to improve your skills. Slow and Steady wins the race!
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6">
+          <div>
+            <i class="fa-regular fa-futbol fa-2x"></i>    
+            <h5>Our Fields</h5>
+            <p>
+              Our fields are designed with the state-of-the-art technology, making them 
+              modern and accomodating to the needs of sports.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div>
+            <i class="fa-solid fa-trophy fa-2x"></i>
+            <h5>Events and Tournaments</h5>
+            <p>
+              Here at Stallion, we do not welcome a mundane life. We try to keep our 
+              players challenged by arranging matches, tournaments, and events often.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div>
+            <i class="fa-solid fa-headset fa-2x"></i>
+
+            <h5>Support 24/24</h5>
+            <p>
+              Our staff and coaches are available to assist you everyday, be it 
+              regarding programs, reservations, buying tickets, and so on.
+            </p>
+
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div>
+            
+            <i class="fa-solid fa-face-laugh-beam fa-2x"></i>
+            <h5>Have Fun!</h5>
+            <p>
+              Most importantly, we aspire to keep Stallion's culture a fun and light-hearted one.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     {% include 'stallion_website/footer.html' %}
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
- 
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5621173105.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
