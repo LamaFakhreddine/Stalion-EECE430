@@ -4,7 +4,7 @@ from .models import *
 
 admin.site.register(Member)
 admin.site.register(Event)
-admin.site.register(Tickets)
-admin.site.register(EventTickets)
+admin.site.register(Ticket)
+admin.site.register(EventTicket)
 admin.site.register(Program)
 admin.site.register(Date)

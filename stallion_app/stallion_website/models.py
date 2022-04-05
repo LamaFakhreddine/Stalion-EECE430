@@ -1,3 +1,4 @@
+from turtle import ondrag
 from django.db import models
 
 # Create your models here.
@@ -8,6 +9,9 @@ class Member(models.Model):
     password = models.CharField(max_length=200)
     dob = models.DateField()
     phone_number = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
 class Coach(models.Model):
     name = models.CharField(max_length=100)
@@ -40,12 +44,15 @@ class Date(models.Model):
 class Event(models.Model):
     class Meta:
         unique_together = ('datetime', 'location')
-    name = models.EmailField(max_length=200)
+    name = models.CharField(max_length=200)
     datetime = models.DateTimeField()
     location = models.CharField(max_length=200)
     description = models.CharField(max_length=300)
+    # num_tickets = models.IntegerField(default=50)
+    def __str__(self):
+        return self.name
 
-class Tickets(models.Model):
+class Ticket(models.Model):
     TICKET_TYPE = (
         ('Area A', 'Area A'),
         ('Area B', 'Area B'),
@@ -53,11 +60,17 @@ class Tickets(models.Model):
     )
     ticket = models.CharField(max_length=20, choices=TICKET_TYPE)
     price = models.IntegerField()
-
-class EventTickets(models.Model):
+    def __str__(self):
+        return self.ticket
+    
+class EventTicket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    ticket = models.ForeignKey(Tickets, on_delete=models.CASCADE)
-    num_tickets = models.IntegerField()
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.member.name + "--" + self.event.name
+
+
 
 class Admin(models.Model):
     email = models.EmailField(max_length=100, unique=True)
