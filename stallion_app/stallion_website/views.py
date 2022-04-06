@@ -6,5 +6,8 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'stallion_website/index.html')
 
+def events(request):
+    return render(request, 'stallion_website/events.html')
+    
 def about(request):
     return HttpResponse("ABOUT US")
