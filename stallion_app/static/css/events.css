@@ -1,0 +1,67 @@
+@import url("variables.css");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    background: var(--darkgrey);
+}
+
+h1 {
+    font-size: 2.25rem;
+    color: var(--darkorange);
+    width: fit-content;
+    margin-bottom: 2rem;
+}
+
+.event-list {
+    margin-top: 2rem;
+    width: 80%;
+}
+
+.event-card{
+    border-radius: 5px;
+    background-color: var(--white);
+    box-shadow: 0 3px 15px #2c2c2cbc;
+    box-shadow: 0 3px 15px #4a4a4a79;
+
+    margin: 1.5rem 0 ;
+}
+
+.event-card > div {
+    padding: 1rem;
+}
+
+.event-card-date{
+    text-align: center; 
+    font-weight: 500; 
+    width: 15%;
+    background-color: #fda14b;
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+}
+
+.event-card-date .day{
+    font-size: 3.5rem;
+    letter-spacing: 0.5rem;
+}
+
+.event-card-desc{
+    width: 65%; 
+}
+
+.event-card-desc .title{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.event-card-desc p{
+    color: var(--darkgrey);
+}
+
+.event-card-time-loc > div {
+    margin-right: 4rem;
+}
