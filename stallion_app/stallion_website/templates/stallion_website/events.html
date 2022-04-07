@@ -30,11 +30,18 @@
     {% include 'stallion_website/next-event.html' %}
 
     <!-- UPCOMING EVENTS LIST -->
-    <section class="container-fluid">
+    <section id="event-list" class="container-fluid">
         <div class="row h-100" style="padding: 2.75rem 6.25rem;">
             <h1 class="text-center">Upcoming Events</h1>
-            <div>
-                <ul class="event-list me-auto ms-auto">
+            <!-- searchbar and list -->
+            <div class="event-list-wrapper mx-auto">
+              <div class="input-group mb-5 mt-4 ms-auto">
+                <input type="text" class="form-control" placeholder="Search event" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <button class="btn search-btn" type="button" id="button-addon2">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              </div>
+                <ul class="event-list">
                     <li class="d-flex event-card">
                       <div class="event-card-date">
                         <div class="day">11</div>
@@ -60,7 +67,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="ms-auto d-flex align-items-center" style="border-left: 1px solid #4a4a4a79;">
+                      <div class="ms-auto mt-auto mb-auto d-flex align-items-center" style="border-left: 1px solid #7c7c7c54; height:70%;">
                         <button
                         type="button"
                         class=" btn  secondary-btn-stallion-sm">
@@ -92,7 +99,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="ms-auto d-flex align-items-center" style="border-left: 1px solid #4a4a4a79;">
+                      <div class="ms-auto mt-auto mb-auto d-flex align-items-center" style="border-left: 1px solid #7c7c7c54; height:70%;">
                         <button
                         type="button"
                         class=" btn  secondary-btn-stallion-sm">
@@ -124,7 +131,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="ms-auto d-flex align-items-center" style="border-left: 1px solid #4a4a4a79;">
+                      <div class="ms-auto mt-auto mb-auto d-flex align-items-center" style="border-left: 1px solid #7c7c7c54; height:70%;">
                         <button
                         type="button"
                         class=" btn  secondary-btn-stallion-sm">
