@@ -9,3 +9,6 @@ def home(request):
 
 def about(request):
     return HttpResponse("ABOUT US")
+
+def login(request):
+    return render(request, 'stallion_website/login.html')
