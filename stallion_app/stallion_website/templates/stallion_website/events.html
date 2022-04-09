@@ -93,12 +93,12 @@
             <h1 class="text-center">Upcoming Events</h1>
             <!-- searchbar and list -->
             <div class="event-list-wrapper mx-auto">
-              <div class="input-group mb-5 mt-4 ms-auto">
+              <form class="input-group mb-5 mt-4 ms-auto">
                 <input type="text" class="form-control" placeholder="Search event" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <button class="btn search-btn" type="button" id="button-addon2">
                   <i class="fa-solid fa-magnifying-glass"></i>
               </button>
-              </div>
+              </form>
                 <ul class="event-list">
                   {% for event in events %}
                     <li id="{{event.id}}" class="d-flex event-card">
@@ -133,7 +133,7 @@
                       </div>
                     </li>
                   {% endfor %}
-
+                </ul>
             </div>
         </div>
     </section>
