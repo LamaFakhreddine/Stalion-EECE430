@@ -20,6 +20,12 @@
       type="text/css"
       href="{% static '/css/events.css' %}"
     />
+    <link 
+      rel="stylesheet" 
+      type="text/css" 
+      href="{% static '/css/next-event.css' %}"
+    />
+
   </head>
 
   <body>
@@ -27,7 +33,59 @@
     {% include 'stallion_website/navbar.html' %}
 
     <!-- NEXT EVENT -->
-    {% include 'stallion_website/next-event.html' %}
+    <section id="nextEvent" class="container-fluid">
+      <div class="row justify-content-center">
+        <h1>Next Event</h1>
+        <div class="d-flex justify-content-center py-4">
+          <div class="counter-box">
+            <div id="counter-days"></div>
+            <div>Days</div>
+          </div>
+          <div class="counter-box">
+            <div id="counter-hours"></div>
+            <div>Hours</div>
+          </div>
+          <div class="counter-box">
+            <div id="counter-minutes"></div>
+            <div>Minutes</div>
+          </div>
+          <div class="counter-box">
+            <div id="counter-seconds"></div>
+            <div>Seconds</div>
+          </div>
+        </div>
+        <h3 class="">{{next_event.name}}</h3>
+        <div class="d-flex justify-content-center py-2 event-info">
+          <div style="margin-right: 1.5rem">
+            <i class="bi bi-clock-fill"></i>
+            <span>{{next_event.datetime.time}}</span>
+          </div>
+          <div>
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>{{next_event.location}}</span>
+          </div>
+        </div>
+  
+        <div class="d-flex justify-content-center py-4">
+          <a
+            type="button"
+            class="btn btn-primary primary-btn-stallion"
+            width="175px"
+            style="margin-right: 1.5rem"
+          >
+            Buy Tickets Now!
+          </a>
+          <a
+            href="#{{next_event.id}}"
+            type="button"
+            class="btn btn-primary primary-btn-stallion"
+            width="175px"
+          >
+            View Event
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- UPCOMING EVENTS LIST -->
     <section id="event-list" class="container-fluid">
@@ -42,102 +100,40 @@
               </button>
               </div>
                 <ul class="event-list">
-                    <li class="d-flex event-card">
+                  {% for event in events %}
+                    <li id="{{event.id}}" class="d-flex event-card">
                       <div class="event-card-date">
-                        <div class="day">11</div>
-                        <div class="month">April</div>
+                        <div class="day">{{event.day_number}}</div>
+                        <div class="month">{{event.month_name}}</div>
                       </div>
                       <div class="event-card-desc">
-                        <div class="title">Women's Volleyball Semi-Finals</div>
-                        <p class="">Stallion's women volleyball team will compete in the semi finals of the
-                          local volleyball tournament.</p>
+                        <div class="title">{{event.name}}</div>
+                        <p class="">{{event.description}}</p>
                           <hr width="50%">
-                        <div class="event-card-time-loc d-flex">
+                        <div class="event-card-time-loc d-flex mt-auto">
                           <div>
                             <span>
                               <i class="fa-solid fa-clock"></i>
-                              9:00 P.M
+                              {{event.datetime.time}}
                             </span>
                           </div>
                           <div>
                             <span>
                               <i class="bi bi-geo-alt-fill"></i>
-                              Westward Building Court 1
+                              {{event.location}}
                             </span>
                           </div>
                         </div>
                       </div>
                       <div class="ms-auto mt-auto mb-auto d-flex align-items-center" style="border-left: 1px solid #7c7c7c54; height:70%;">
-                        <button
+                        <a
                         type="button"
                         class=" btn  secondary-btn-stallion-sm">
-                        Buy Tickets</button>
+                        Buy Tickets</a>
                       </div>
                     </li>
-                    <li class="d-flex event-card">
-                      <div class="event-card-date">
-                        <div class="day">11</div>
-                        <div class="month">April</div>
-                      </div>
-                      <div class="event-card-desc">
-                        <div class="title">Women's Volleyball Semi-Finals</div>
-                        <p class="">Stallion's women volleyball team will compete in the semi finals of the
-                          local volleyball tournament.</p>
-                          <hr width="50%">
-                        <div class="event-card-time-loc d-flex">
-                          <div>
-                            <span>
-                              <i class="fa-solid fa-clock"></i>
-                              9:00 P.M
-                            </span>
-                          </div>
-                          <div>
-                            <span>
-                              <i class="bi bi-geo-alt-fill"></i>
-                              Westward Building Court 1
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="ms-auto mt-auto mb-auto d-flex align-items-center" style="border-left: 1px solid #7c7c7c54; height:70%;">
-                        <button
-                        type="button"
-                        class=" btn  secondary-btn-stallion-sm">
-                        Buy Tickets</button>
-                      </div>
-                    </li>
-                    <li class="d-flex event-card">
-                      <div class="event-card-date">
-                        <div class="day">11</div>
-                        <div class="month">April</div>
-                      </div>
-                      <div class="event-card-desc">
-                        <div class="title">Women's Volleyball Semi-Finals</div>
-                        <p class="">Stallion's women volleyball team will compete in the semi finals of the
-                          local volleyball tournament.</p>
-                          <hr width="50%">
-                        <div class="event-card-time-loc d-flex">
-                          <div>
-                            <span>
-                              <i class="fa-solid fa-clock"></i>
-                              9:00 P.M
-                            </span>
-                          </div>
-                          <div>
-                            <span>
-                              <i class="bi bi-geo-alt-fill"></i>
-                              Westward Building Court 1
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="ms-auto mt-auto mb-auto d-flex align-items-center" style="border-left: 1px solid #7c7c7c54; height:70%;">
-                        <button
-                        type="button"
-                        class=" btn  secondary-btn-stallion-sm">
-                        Buy Tickets</button>
-                      </div>
-                    </li>
+                  {% endfor %}
+
             </div>
         </div>
     </section>
@@ -157,5 +153,43 @@
       src="https://kit.fontawesome.com/5621173105.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Countdown until the next event -->
+    <script>
+      const nextEvent = {{next_event.datetime|date:"U"}}
+
+      function makeTimer() {
+        // get event time
+        var endTime=new Date(nextEvent * 1000);
+        endTime = (Date.parse(endTime) / 1000);
+        // get current time
+        var now = new Date();
+        now = (Date.parse(now) / 1000);
+        //calc difference
+        var timeLeft = endTime - now;
+
+        var now = new Date();
+        now = (Date.parse(now) / 1000);
+        console.log("now", new Date(), "event_date", endTime)
+        var timeLeft = endTime - now;
+
+        var days = Math.floor(timeLeft / 86400);
+        var hours = Math.floor(timeLeft / 3600 ) % 24;
+        var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+        var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+        if (hours < "10") { hours = "0" + hours; }
+        if (minutes < "10") { minutes = "0" + minutes; }
+        if (seconds < "10") { seconds = "0" + seconds; }
+
+        document.getElementById("counter-days").innerHTML = days;
+        document.getElementById("counter-hours").innerHTML = hours;
+        document.getElementById("counter-minutes").innerHTML = minutes;
+        document.getElementById("counter-seconds").innerHTML = seconds;
+      }
+      
+      setInterval(function() { makeTimer(); }, 1000);
+    </script>
+
   </body>
 </html>

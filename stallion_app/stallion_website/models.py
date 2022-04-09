@@ -1,5 +1,5 @@
-from turtle import ondrag
 from django.db import models
+import calendar
 
 # Create your models here.
 
@@ -48,9 +48,16 @@ class Event(models.Model):
     datetime = models.DateTimeField()
     location = models.CharField(max_length=200)
     description = models.CharField(max_length=300)
-    # num_tickets = models.IntegerField(default=50)
     def __str__(self):
         return self.name
+    
+    @property
+    def month_name(self):
+        return calendar.month_name[self.datetime.month]
+    
+    @property
+    def day_number(self):
+        return self.datetime.date().day
 
 class Ticket(models.Model):
     TICKET_TYPE = (

@@ -20,6 +20,12 @@
       type="text/css"
       href="{% static '/css/index.css' %}"
     />
+    <link 
+      rel="stylesheet" 
+      type="text/css" 
+      href="{% static '/css/next-event.css' %}" 
+    />
+
   </head>
 
   <body class="d-flex flex-column min-vh-100">
@@ -102,12 +108,12 @@
                 Come watch our Stallion's women volleyball team compete at the
                 local volleyball tournament.
               </p>
-              <button
+              <a
                 type="button"
                 class="btn btn-primary primary-btn-stallion"
               >
                 Buy Tickets Now!
-              </button>
+            </a>
             </div>
           </div>
         </div>
@@ -132,9 +138,60 @@
       </div>
     </section>
 
-    <!-- Next Event Section -->
-    {% include 'stallion_website/next-event.html' %}
-
+    <!-- NEXT EVENT -->
+    <section id="nextEvent" class="container-fluid">
+      <div class="row justify-content-center">
+        <h1>Next Event</h1>
+        <div class="d-flex justify-content-center py-4">
+          <div class="counter-box">
+            <div id="counter-days"></div>
+            <div>Days</div>
+          </div>
+          <div class="counter-box">
+            <div id="counter-hours"></div>
+            <div>Hours</div>
+          </div>
+          <div class="counter-box">
+            <div id="counter-minutes"></div>
+            <div>Minutes</div>
+          </div>
+          <div class="counter-box">
+            <div id="counter-seconds"></div>
+            <div>Seconds</div>
+          </div>
+        </div>
+        <h3 class="">{{next_event.name}}</h3>
+        <div class="d-flex justify-content-center py-2 event-info">
+          <div style="margin-right: 1.5rem">
+            <i class="bi bi-clock-fill"></i>
+            <span>{{next_event.datetime.time}}</span>
+          </div>
+          <div>
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>{{next_event.location}}</span>
+          </div>
+        </div>
+  
+        <div class="d-flex justify-content-center py-4">
+          <a
+            type="button"
+            class="btn btn-primary primary-btn-stallion"
+            width="175px"
+            style="margin-right: 1.5rem"
+          >
+            Buy Tickets Now!
+          </a>
+          <a
+            href="/events/#{{next_event.id}}"
+            type="button"
+            class="btn btn-primary primary-btn-stallion"
+            width="175px"
+          >
+            View Event
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- Programs Section -->
     <section id="programs" class="container-fluid">
@@ -323,5 +380,44 @@
       src="https://kit.fontawesome.com/5621173105.js"
       crossorigin="anonymous"
     ></script>
+
+        <!-- Countdown until the next event -->
+        <script>
+          const nextEvent = {{next_event.datetime.date}}
+          console.log(nextEvent)
+    
+          function makeTimer() {
+            // get event time
+            var endTime=new Date(nextEvent * 1000);
+            endTime = (Date.parse(endTime) / 1000);
+            // get current time
+            var now = new Date();
+            now = (Date.parse(now) / 1000);
+            //calc difference
+            var timeLeft = endTime - now;
+    
+            var now = new Date();
+            now = (Date.parse(now) / 1000);
+            console.log("now", new Date(), "event_date", endTime)
+            var timeLeft = endTime - now;
+    
+            var days = Math.floor(timeLeft / 86400);
+            var hours = Math.floor(timeLeft / 3600) % 24;
+            var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+            var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+    
+            if (hours < "10") { hours = "0" + hours; }
+            if (minutes < "10") { minutes = "0" + minutes; }
+            if (seconds < "10") { seconds = "0" + seconds; }
+    
+            document.getElementById("counter-days").innerHTML = days;
+            document.getElementById("counter-hours").innerHTML = hours;
+            document.getElementById("counter-minutes").innerHTML = minutes;
+            document.getElementById("counter-seconds").innerHTML = seconds;
+          }
+          
+          setInterval(function() { makeTimer(); }, 1000);
+        </script>
+
   </body>
 </html>
