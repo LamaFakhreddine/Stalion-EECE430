@@ -29,3 +29,9 @@
 .navbar-nav .nav-link:hover{
     color: var(--orange);
 }
+
+.navbar-nav .navbar-nav .nav-item .dropdown-item:active{
+    background-color: var(--darkorange) !important;
+}
+
+
