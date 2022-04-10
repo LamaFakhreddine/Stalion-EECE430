@@ -48,3 +48,6 @@ def about(request):
 
 def login(request):
     return render(request, 'stallion_website/login.html')
+
+def signup(request):
+    return render(request, 'stallion_website/signup.html')
