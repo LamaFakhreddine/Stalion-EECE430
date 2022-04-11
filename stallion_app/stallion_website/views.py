@@ -51,3 +51,9 @@ def login(request):
 
 def signup(request):
     return render(request, 'stallion_website/signup.html')
+	
+def member(request):
+    return render(request, 'stallion_website/memberAccount.html')
+
+def coach(request):
+    return render(request, 'stallion_website/coachAccount.html')
