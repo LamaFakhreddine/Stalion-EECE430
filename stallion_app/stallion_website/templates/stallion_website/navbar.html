@@ -38,9 +38,10 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-              <li><a class="dropdown-item" href="#">Register</a></li>
+              <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
+              <li><a class="dropdown-item" href="{% url 'memberAccount' %}">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item" href="{% url 'login' %}">Logout</a></li>
             </ul>
           </li>
         </ul>
