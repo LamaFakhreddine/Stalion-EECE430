@@ -75,7 +75,7 @@ class EventTicket(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     def __str__(self):
-        return self.member.name + "--" + self.event.name
+        return self.member.name + "---" + self.event.name
 
 
 

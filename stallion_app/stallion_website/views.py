@@ -8,7 +8,9 @@ import calendar
 
 def home(request):
     now = datetime.now()
+    print("NOW", now)
     next_event = Event.objects.filter(datetime__gt = now).order_by('datetime')[0]
+    print("DATTIME", next_event.datetime)
     context = {
         "next_event": next_event
     }

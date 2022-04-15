@@ -57,6 +57,10 @@
         <h3 class="">{{next_event.name}}</h3>
         <div class="d-flex justify-content-center py-2 event-info">
           <div style="margin-right: 1.5rem">
+            <i class="bi bi-calendar-fill"></i>
+            <span>{{next_event.datetime.date}}</span>
+          </div>
+          <div style="margin-right: 1.5rem">
             <i class="bi bi-clock-fill"></i>
             <span>{{next_event.datetime.time}}</span>
           </div>
@@ -159,7 +163,7 @@
 
     <!-- Countdown until the next event -->
     <script>
-      const nextEvent = {{next_event.datetime|date:"U"}}
+      const nextEvent = {{next_event.datetime|date:"U"}} - 10800
 
       function makeTimer() {
         // get event time
