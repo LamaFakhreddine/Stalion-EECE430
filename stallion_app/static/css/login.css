@@ -1,0 +1,96 @@
+@import url("variables.css");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    background: var(--darkslategray);
+}
+
+h1 {
+    font-size: 2.25rem;
+    color: var(--darkorange);
+    width: fit-content;
+    margin-bottom: 2rem;
+}
+
+/* LOGIN */
+
+.login-btn{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 60%;
+    width: 40px;
+    height: 40px;
+}
+
+.login-sm-btn{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 60%;
+    width: 40px;
+    height: 40px;
+}
+
+#login-title{
+    margin-bottom: 500px;
+    box-sizing: border-box;
+
+}
+
+.login-btn{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 60%;
+    width: 40px;
+    height: 40px;
+}
+
+.login-sm-btn{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 60%;
+    width: 40px;
+    height: 40px;
+}
+
+.login-txt{
+    color: var(--darkorange)
+}
+
+
+.login-txt:hover{
+    color: var(--darkorange)
+}
+
+.login-txt-w{
+    color: var(--white)
+}
+
+.login-txt-g{
+    color: var(--darkgrey)
+}
+
+.login-txt-sg{
+    color: var(--darkslategray)
+}
+
+.login-link-txt{
+    text-decoration: none;
+}
+
+.login-link-txt:hover{
+    text-decoration: none;
+    color: var(--darkgrey)
+
+}
+/* Divider */
+.divider:after, .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    color: var(--white)
+}

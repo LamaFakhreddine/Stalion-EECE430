@@ -85,6 +85,10 @@
     color: var(--darkorange)
 }
 
+.login-txt-w{
+    color: var(--white)
+}
+
 .login-txt:hover{
     color: var(--darkorange)
 }
@@ -95,4 +99,5 @@
     flex: 1;
     height: 1px;
     background: #eee;
+    color: var(--white)
 }
