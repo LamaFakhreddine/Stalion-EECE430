@@ -4,7 +4,10 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import * 
 import calendar
+from django.contrib.auth.forms import UserCreationForm
+
 # Create your views here.
+from .forms import CreateUserForm
 
 def home(request):
     now = datetime.now()
@@ -49,11 +52,39 @@ def about(request):
     return HttpResponse("ABOUT US")
 
 def login(request):
-    return render(request, 'stallion_website/login.html')
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid:
+            form.save()
+
+    context = {'form':form}
+    return render(request, 'stallion_website/login.html', context)
 
 def signup(request):
-    return render(request, 'stallion_website/signup.html')
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid:
+            form.save()
+
+    context = {'form':form}
+    return render(request, 'stallion_website/signup.html', context)
 	
+def register(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid:
+            form.save()
+
+    context = {'form':form}
+    return render(request, 'stallion_website/register.html', context)
+	
+
 def member(request):
     return render(request, 'stallion_website/memberAccount.html')
 

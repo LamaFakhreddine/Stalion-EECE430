@@ -65,39 +65,3 @@
     color: white;
 }
 
-.login-btn{
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 60%;
-    width: 40px;
-    height: 40px;
-}
-
-.login-sm-btn{
-    background-color: transparent;
-    border: 2px solid white;
-    border-radius: 60%;
-    width: 40px;
-    height: 40px;
-}
-
-.login-txt{
-    color: var(--darkorange)
-}
-
-.login-txt-w{
-    color: var(--white)
-}
-
-.login-txt:hover{
-    color: var(--darkorange)
-}
-
-/* Divider */
-.divider:after, .divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
-    color: var(--white)
-}
