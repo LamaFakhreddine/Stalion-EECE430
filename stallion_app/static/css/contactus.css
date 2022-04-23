@@ -1,0 +1,43 @@
+@import url("variables.css");
+
+
+h1{
+    text-align: center;
+ }
+
+h2{
+text-align: center;
+}
+
+h3{
+text-align: center;
+}
+
+h4{
+text-align: center;
+}
+
+h5{
+text-align: center;
+}
+
+
+ .photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.locText{
+    float: left; 
+    text-align: center;
+}
+
+.locMap{
+    float: right;
+    width:70%;
+}
+
+.titles{
+    text-align: center;
+}

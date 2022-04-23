@@ -105,3 +105,9 @@ def member(request):
 @login_required(login_url='home')
 def coach(request):
     return render(request, 'stallion_website/coachAccount.html')
+
+def admin(request):
+    return render(request, 'stallion_website/adminAccount.html')
+
+def contact(request):
+    return render(request, 'stallion_website/contactus.html')

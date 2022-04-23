@@ -30,7 +30,7 @@
             <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="{% url 'contactUs' %}">Contact Us</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,7 +43,7 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
               <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
-              <li><a class="dropdown-item" href="{% url 'memberAccount' %}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'adminAccount' %}">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             </ul>

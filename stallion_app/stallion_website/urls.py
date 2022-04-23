@@ -11,5 +11,8 @@ urlpatterns = [
      path('logout/', views.logoutUser, name="logout"),
 
 	path('login/memberAccount/', views.member, name="memberAccount"),
-    path('login/coachAccount/', views.coach, name="coachAccount")
+    path('login/coachAccount/', views.coach, name="coachAccount"),
+
+    path('adminAccount/', views.admin, name="adminAccount"),
+    path('contactUs/', views.contact, name="contactUs")
 ]

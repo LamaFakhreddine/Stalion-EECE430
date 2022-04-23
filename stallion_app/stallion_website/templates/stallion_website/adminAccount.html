@@ -1,0 +1,556 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Member Account</title>
+    <!--
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
+
+    -->
+      
+    <!-- Bootstrap CSS -->
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/adminAccount.css' %}"
+    />
+    
+  </head>
+  
+  <body class="d-flex flex-column min-vh-100">
+    {% include 'stallion_website/navbar.html' %}
+    
+    <div>
+
+
+    <div class="coaches">
+        <p>&nbsp;</p>
+        <h3 class="display-5 fw-bold">Coaches</h3>
+        <p>&nbsp;</p>
+
+        <body>
+          <div class="col-lg-6 mx-auto">
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                   <button id = "add1" type="button" class="btn btn-outline-secondary btn-lg px-4">Add</button>
+               </div>
+          </div>
+
+          <div id="addDiv1" class = "addClass" style="background-color: var(--darkgrey)">
+
+              <label for="fname">First name:</label>
+              <input type="text" id="fname" name="fname"><br><br>
+
+              <label for="fname">Last name:</label>
+              <input type="text" id="lname" name="lname"><br><br>
+
+              <label for="fname">Specialty:</label>
+              <input type="text" id="spec" name="spec"><br><br>
+
+              <button>Add</button>
+
+          </div>
+        
+          <script>
+            const targetDiv1 = document.getElementById("addDiv1");
+            const btn1 = document.getElementById("add1");
+            targetDiv1.style.display = "none";
+            btn1.onclick = function () {
+              if (targetDiv1.style.display !== "none") {
+                targetDiv1.style.display = "none";
+              } else {
+                targetDiv1.style.display = "block";
+              }
+            };
+          </script>
+        </body>
+
+          <p>&nbsp;</p>
+          
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "update2" type="button" class="btn btn-outline-secondary btn-lg px-4">Update</button>
+                 </div>
+            </div>
+
+            <div id="updateDiv2" class = "updateClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Update</button>
+
+            </div>
+          
+            <script>
+              const targetDiv2 = document.getElementById("updateDiv2");
+              const btn2 = document.getElementById("update2");
+              targetDiv2.style.display = "none";
+              btn2.onclick = function () {
+                if (targetDiv2.style.display !== "none") {
+                  targetDiv2.style.display = "none";
+                } else {
+                  targetDiv2.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+    
+          
+          <p>&nbsp;</p>
+          
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "delete" type="button" class="btn btn-outline-secondary btn-lg px-4">Delete</button>
+                 </div>
+            </div>
+
+            <div id="deleteDiv" class = "deleteClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Delete</button>
+
+            </div>
+          
+            <script>
+              const targetDiv3 = document.getElementById("deleteDiv");
+              const btn3 = document.getElementById("delete");
+              targetDiv3.style.display = "none";
+              btn3.onclick = function () {
+                if (targetDiv3.style.display !== "none") {
+                  targetDiv3.style.display = "none";
+                } else {
+                  targetDiv3.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+        </div>
+
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+
+    <div class = "programs">
+
+        <p>&nbsp;</p>
+        <h3 class="display-5 fw-bold">Programs</h3>
+        <p>&nbsp;</p>
+
+        <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "add7" type="button" class="btn btn-outline-secondary btn-lg px-4">Add</button>
+                 </div>
+            </div>
+
+            <div id="addDiv7" class = "addClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Add</button>
+
+            </div>
+          
+            <script>
+              const targetDiv7 = document.getElementById("addDiv7");
+              const btn7 = document.getElementById("add7");
+              targetDiv7.style.display = "none";
+              btn7.onclick = function () {
+                if (targetDiv7.style.display !== "none") {
+                  targetDiv7.style.display = "none";
+                } else {
+                  targetDiv7.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+
+          <p>&nbsp;</p>
+          
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "update8" type="button" class="btn btn-outline-secondary btn-lg px-4">Update</button>
+                 </div>
+            </div>
+
+            <div id="updateDiv8" class = "updateClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Update</button>
+
+            </div>
+          
+            <script>
+              const targetDiv8= document.getElementById("updateDiv8");
+              const btn8 = document.getElementById("update8");
+              targetDiv8.style.display = "none";
+              btn8.onclick = function () {
+                if (targetDiv8.style.display !== "none") {
+                  targetDiv8.style.display = "none";
+                } else {
+                  targetDiv8.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+    
+          
+          <p>&nbsp;</p>
+          
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "delete9" type="button" class="btn btn-outline-secondary btn-lg px-4">Delete</button>
+                 </div>
+            </div>
+
+            <div id="deleteDiv9" class = "deleteClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Delete</button>
+
+            </div>
+          
+            <script>
+              const targetDiv9 = document.getElementById("deleteDiv9");
+              const btn9 = document.getElementById("delete9");
+              targetDiv9.style.display = "none";
+              btn3.onclick = function () {
+                if (targetDiv9.style.display !== "none") {
+                  targetDiv9.style.display = "none";
+                } else {
+                  targetDiv9.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+
+        <div class = "events">
+
+        <p>&nbsp;</p>
+        <h3 class="display-5 fw-bold">Events</h3>
+        <p>&nbsp;</p>
+
+        <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "add10" type="button" class="btn btn-outline-secondary btn-lg px-4">Add</button>
+                 </div>
+            </div>
+
+            <div id="addDiv10" class = "addClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Add</button>
+
+            </div>
+          
+            <script>
+              const targetDiv10 = document.getElementById("addDiv10");
+              const btn10 = document.getElementById("add10");
+              targetDiv10.style.display = "none";
+              btn10.onclick = function () {
+                if (targetDiv10.style.display !== "none") {
+                  targetDiv10.style.display = "none";
+                } else {
+                  targetDiv10.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+
+          <p>&nbsp;</p>
+          
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "update11" type="button" class="btn btn-outline-secondary btn-lg px-4">Update</button>
+                 </div>
+            </div>
+
+            <div id="updateDiv11" class = "updateClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Update</button>
+
+            </div>
+          
+            <script>
+              const targetDiv11 = document.getElementById("updateDiv11");
+              const btn11 = document.getElementById("update11");
+              targetDiv11.style.display = "none";
+              btn2.onclick = function () {
+                if (targetDiv11.style.display !== "none") {
+                  targetDiv11.style.display = "none";
+                } else {
+                  targetDiv11.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+    
+          
+          <p>&nbsp;</p>
+          
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "delete12" type="button" class="btn btn-outline-secondary btn-lg px-4">Delete</button>
+                 </div>
+            </div>
+
+            <div id="deleteDiv12" class = "deleteClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Delete</button>
+
+            </div>
+          
+            <script>
+              const targetDiv12 = document.getElementById("deleteDiv12");
+              const btn12 = document.getElementById("delete12");
+              targetDiv12.style.display = "none";
+              btn3.onclick = function () {
+                if (targetDiv12.style.display !== "none") {
+                  targetDiv12.style.display = "none";
+                } else {
+                  targetDiv12.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+
+    <div class = "areas">
+
+        <p>&nbsp;</p>
+        <h3 class="display-5 fw-bold">Reserveable Areas</h3>
+        <p>&nbsp;</p>
+
+        <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "add13" type="button" class="btn btn-outline-secondary btn-lg px-4">Add</button>
+                 </div>
+            </div>
+
+            <div id="addDiv13" class = "addClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Add</button>
+
+            </div>
+          
+            <script>
+              const targetDiv13 = document.getElementById("addDiv13");
+              const btn13 = document.getElementById("add13");
+              targetDiv13.style.display = "none";
+              btn13.onclick = function () {
+                if (targetDiv13.style.display !== "none") {
+                  targetDiv13.style.display = "none";
+                } else {
+                  targetDiv13.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+
+          <p>&nbsp;</p>
+          
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "update14" type="button" class="btn btn-outline-secondary btn-lg px-4">Update</button>
+                 </div>
+            </div>
+
+            <div id="updateDiv14" class = "updateClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Update</button>
+
+            </div>
+          
+            <script>
+              const targetDiv14 = document.getElementById("updateDiv14");
+              const btn14 = document.getElementById("update14");
+              targetDiv14.style.display = "none";
+              btn14.onclick = function () {
+                if (targetDiv14.style.display !== "none") {
+                  targetDiv14.style.display = "none";
+                } else {
+                  targetDiv14.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+    
+          
+          <p>&nbsp;</p>
+
+          <body>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                     <button id = "delete15" type="button" class="btn btn-outline-secondary btn-lg px-4">Delete</button>
+                 </div>
+            </div>
+
+            <div id="deleteDiv15" class = "deleteClass" style="background-color: var(--darkgrey)">
+
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname"><br><br>
+
+                <label for="fname">Last name:</label>
+                <input type="text" id="lname" name="lname"><br><br>
+
+                <label for="fname">Specialty:</label>
+                <input type="text" id="spec" name="spec"><br><br>
+
+                <button>Delete</button>
+
+            </div>
+          
+            <script>
+              const targetDiv15 = document.getElementById("deleteDiv15");
+              const btn15 = document.getElementById("delete15");
+              targetDiv15.style.display = "none";
+              btn15.onclick = function () {
+                if (targetDiv15.style.display !== "none") {
+                  targetDiv15.style.display = "none";
+                } else {
+                  targetDiv15.style.display = "block";
+                }
+              };
+            </script>
+          </body>
+
+        </div>
+
+        <p>&nbsp;</p>
+
+      {% include 'stallion_website/footer.html' %}
+
+
+    </div>
+  
+  <script src = "{% static '/dist/css/bootstrap.min.css'%}"></script>
+
+      
+  </body>
+
+</html>
