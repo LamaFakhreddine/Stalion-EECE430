@@ -1,13 +1,18 @@
 from datetime import datetime
 from multiprocessing import Event
+import re
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import * 
 import calendar
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .forms import CreateUserForm
+
 
 def home(request):
     now = datetime.now()
@@ -18,6 +23,7 @@ def home(request):
         "next_event": next_event
     }
     return render(request, 'stallion_website/index.html', context=context)
+
 
 def events(request):
     # get all events whose date has not passed yet 
@@ -48,45 +54,54 @@ def events(request):
     else:
         render("Bad request!")  
 
+
 def about(request):
     return HttpResponse("ABOUT US")
 
-def login(request):
-    form = CreateUserForm()
 
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid:
-            form.save()
+def loginPage(request):
+    if request.user.is_authenticated:
+       return redirect('home') 
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password= request.POST.get('password')
 
-    context = {'form':form}
-    return render(request, 'stallion_website/login.html', context)
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                print("in")
+                return redirect('memberAccount')
+            else:
+                messages.info(request, "Username OR password is incorrect")
+        context = {}
+        return render(request, 'stallion_website/login.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return(redirect('home'))
 
 def signup(request):
-    form = CreateUserForm()
+    if request.user.is_authenticated:
+       return redirect('home') 
+    else:
+        form = CreateUserForm()
 
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid:
-            form.save()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request,'Account was created for' + user)
+                return redirect('login')
 
-    context = {'form':form}
-    return render(request, 'stallion_website/signup.html', context)
+        context = {'form':form}
+        return render(request, 'stallion_website/signup.html', context)
 	
-def register(request):
-    form = CreateUserForm()
-
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid:
-            form.save()
-
-    context = {'form':form}
-    return render(request, 'stallion_website/register.html', context)
-	
-
+@login_required(login_url='home')
 def member(request):
     return render(request, 'stallion_website/memberAccount.html')
 
+@login_required(login_url='home')
 def coach(request):
     return render(request, 'stallion_website/coachAccount.html')

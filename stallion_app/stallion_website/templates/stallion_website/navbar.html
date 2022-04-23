@@ -37,11 +37,15 @@
               <i class="bi bi-person-circle bi" width="22px" height="22px"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
+              <li class="nav-item">
+                <span class="messages"> Logged in as {{request.user}}</span>
+              </li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
               <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
               <li><a class="dropdown-item" href="{% url 'memberAccount' %}">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{% url 'login' %}">Logout</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             </ul>
           </li>
         </ul>
