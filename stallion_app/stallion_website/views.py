@@ -56,7 +56,7 @@ def events(request):
 
 
 def about(request):
-    return HttpResponse("ABOUT US")
+    return render(request, 'stallion_website/About.html')
 
 
 def loginPage(request):
