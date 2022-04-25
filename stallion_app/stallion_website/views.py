@@ -3,15 +3,20 @@ from multiprocessing import Event
 import re
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+
 from .models import * 
 import calendar
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+
 
 # Create your views here.
 from .forms import CreateUserForm
+from .decorators import unauthenticated_user, allowed_users
+
 
 
 def home(request):
@@ -59,55 +64,83 @@ def about(request):
     return render(request, 'stallion_website/About.html')
 
 
+@unauthenticated_user
 def loginPage(request):
-    if request.user.is_authenticated:
-       return redirect('home') 
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password= request.POST.get('password')
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password= request.POST.get('password')
 
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                print("in")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            if request.user.groups.all()[0].name == 'member':
                 return redirect('memberAccount')
+            elif request.user.groups.all()[0].name == 'coach':
+                return redirect('coachAccount')
+            elif request.user.groups.all()[0].name == 'admin':
+                return redirect('adminAccount')
             else:
-                messages.info(request, "Username OR password is incorrect")
-        context = {}
-        return render(request, 'stallion_website/login.html', context)
+                return redirect('home')
+        else:
+            messages.info(request, "Username OR password is incorrect")
+    context = {}
+    return render(request, 'stallion_website/login.html', context)
+
 
 def logoutUser(request):
     logout(request)
     return(redirect('home'))
 
+
+@unauthenticated_user
 def signup(request):
-    if request.user.is_authenticated:
-       return redirect('home') 
-    else:
-        form = CreateUserForm()
+    
+    form = CreateUserForm()
 
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request,'Account was created for' + user)
-                return redirect('login')
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
 
-        context = {'form':form}
-        return render(request, 'stallion_website/signup.html', context)
-	
+            group = Group.objects.get(name='member')
+            user.groups.add(group)
+            messages.success(request,'Account was created for' + username)
+            
+            return redirect('login')
+
+    context = {'form':form}
+    return render(request, 'stallion_website/signup.html', context)
+
+
 @login_required(login_url='home')
+@allowed_users(allowed_roles=['member'])
 def member(request):
     return render(request, 'stallion_website/memberAccount.html')
 
+
 @login_required(login_url='home')
+@allowed_users(allowed_roles=['coach'])
 def coach(request):
     return render(request, 'stallion_website/coachAccount.html')
 
+
+@login_required(login_url='home')
+@allowed_users(allowed_roles=['admin'])
 def admin(request):
     return render(request, 'stallion_website/adminAccount.html')
+
+def profile(request):
+    print("in")
+    if request.user.groups.all()[0].name == 'member':
+        return member(request)
+    elif request.user.groups.all()[0].name == 'coach':
+        return coach(request)
+    elif request.user.groups.all()[0].name == 'admin':
+        return admin(request)
+    else:
+        return redirect('home')
 
 def contact(request):
     return render(request, 'stallion_website/contactus.html')
