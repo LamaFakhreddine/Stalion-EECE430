@@ -22,8 +22,12 @@ from .decorators import unauthenticated_user, allowed_users
 def home(request):
     now = datetime.now()
     print("NOW", now)
-    next_event = Event.objects.filter(datetime__gt = now).order_by('datetime')[0]
-    print("DATTIME", next_event.datetime)
+    events = Event.objects.filter(datetime__gt = now).order_by('datetime')
+    next_event = None
+    # if no events exist, pass null
+    if len(events) != 0:
+        next_event = events[0]
+    # print("DATTIME", next_event.datetime)
     context = {
         "next_event": next_event
     }
@@ -34,7 +38,10 @@ def events(request):
     # get all events whose date has not passed yet 
     today = datetime.today()
     events = Event.objects.filter(datetime__gt = today).order_by('datetime')
-    next_event = events[0]
+    next_event = None
+    # if no events exist, pass null
+    if len(events) != 0:
+        next_event = events[0]
 
     if request.method == 'GET':
         context = {
@@ -106,6 +113,10 @@ def signup(request):
 
             group = Group.objects.get(name='member')
             user.groups.add(group)
+            Member.objects.create(
+                user=user,
+            )
+
             messages.success(request,'Account was created for' + username)
             
             return redirect('login')

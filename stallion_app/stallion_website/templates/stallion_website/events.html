@@ -33,6 +33,7 @@
     {% include 'stallion_website/navbar.html' %}
 
     <!-- NEXT EVENT -->
+    {% if next_event is not None %}
     <section id="nextEvent" class="container-fluid">
       <div class="row justify-content-center">
         <h1>Next Event</h1>
@@ -90,6 +91,7 @@
         </div>
       </div>
     </section>
+    {% endif %}
 
     <!-- UPCOMING EVENTS LIST -->
     <section id="event-list" class="container-fluid">
@@ -106,6 +108,7 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </form>
+              {% if next_event is not None %}
               <ul class="event-list">
                 {% for event in events %}
                   <li id="{{event.id}}" class="d-flex event-card">
@@ -141,6 +144,9 @@
                   </li>
                 {% endfor %}
               </ul>
+              {% else %}
+              <p class="p-5 text-light text-lg-center text-opacity-50" style="font-size: 1.5rem; font-style: italic;">No upcoming events</p>
+              {% endif %}
             </div>
         </div>
     </section>
