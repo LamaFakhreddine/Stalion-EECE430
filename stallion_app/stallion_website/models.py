@@ -4,6 +4,8 @@ from django.db import models
 import calendar
 
 from django.contrib.auth.models import User
+from django.forms import URLField
+
 # Create your models here.
 
 class Member(models.Model):
@@ -34,6 +36,7 @@ class Program(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     price = models.IntegerField(default=0)
+    image_url = models.URLField(max_length=300, null=True)
 
 class MemberPrograms(models.Model):
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
@@ -90,7 +93,7 @@ class EventTicket(models.Model):
 
 class Court(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    image_url = models.URLField(max_length=300)
+    image_url = models.URLField(max_length=300, null=True)
 
 class CourtReservations(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
