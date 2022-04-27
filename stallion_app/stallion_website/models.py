@@ -1,3 +1,5 @@
+from tkinter import CASCADE
+from turtle import ondrag
 from django.db import models
 import calendar
 
@@ -20,12 +22,20 @@ class Coach(models.Model):
     dob = models.DateField()
     phone_number = models.IntegerField()
 
+class Admin(models.Model):
+    email = models.EmailField(max_length=100, unique=True)
+    password = models.CharField(max_length=200)
+
 class Program(models.Model):
     name = models.CharField(max_length=100)
     coach = models.ForeignKey(Coach, on_delete=models.CASCADE)
     start_time = models.TimeField()
     end_time = models.TimeField()
     price = models.IntegerField(default=0)
+
+class MemberPrograms(models.Model):
+    program = models.ForeignKey(Program, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
 
 class Date(models.Model):
     WEEK_DAYS = (
@@ -39,7 +49,6 @@ class Date(models.Model):
     )
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     day = models.CharField(max_length=5, choices=WEEK_DAYS)
-
 
 class Event(models.Model):
     class Meta:
@@ -77,9 +86,17 @@ class EventTicket(models.Model):
     def __str__(self):
         return self.member.name + "---" + self.event.name
 
+class Court(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    image_url = models.URLField(max_length=300)
+
+class CourtReservations(models.Model):
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    court = models.ForeignKey(Court, on_delete=models.CASCADE)
+    reservation_date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
 
 
-class Admin(models.Model):
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=200)
+
 
