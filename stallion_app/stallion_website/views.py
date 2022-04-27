@@ -106,6 +106,10 @@ def signup(request):
 
             group = Group.objects.get(name='member')
             user.groups.add(group)
+            Member.objects.create(
+                user=user,
+            )
+
             messages.success(request,'Account was created for' + username)
             
             return redirect('login')
