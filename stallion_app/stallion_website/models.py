@@ -8,8 +8,14 @@ from django.contrib.auth.models import User
 
 class Member(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE )
+<<<<<<< HEAD
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=100, unique=True)
+=======
+    name = models.CharField(max_length=30, null=True)
+    email = models.EmailField(max_length=100, unique=True, null=True)
+    password = models.CharField(max_length=200, null=True)
+>>>>>>> 69d5e419c6a1c4b8de88c20a1dc18c0ed39861e2
     dob = models.DateField(null=True)
     phone_number = models.IntegerField(null=True)
 

@@ -114,9 +114,16 @@ def signup(request):
             group = Group.objects.get(name='member')
             user.groups.add(group)
             Member.objects.create(
+<<<<<<< HEAD
                 name=user.username,
                 email=user.email,
 
+=======
+                user=user,
+                name=user.username,
+                email=user.email,
+                
+>>>>>>> 69d5e419c6a1c4b8de88c20a1dc18c0ed39861e2
             )
 
             messages.success(request,'Account was created for' + username)
