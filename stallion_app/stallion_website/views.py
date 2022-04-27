@@ -14,7 +14,7 @@ from django.contrib.auth.models import Group
 
 
 # Create your views here.
-from .forms import CreateUserForm
+from .forms import *
 from .decorators import unauthenticated_user, allowed_users
 
 
@@ -115,6 +115,9 @@ def signup(request):
             user.groups.add(group)
             Member.objects.create(
                 user=user,
+                name=user.username,
+                email=user.email,
+                
             )
 
             messages.success(request,'Account was created for' + username)
@@ -137,8 +140,8 @@ def coach(request):
     return render(request, 'stallion_website/coachAccount.html')
 
 
-@login_required(login_url='home')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='home')
+#@allowed_users(allowed_roles=['admin'])
 def admin(request):
     return render(request, 'stallion_website/adminAccount.html')
 
@@ -155,3 +158,57 @@ def profile(request):
 
 def contact(request):
     return render(request, 'stallion_website/contactus.html')
+
+
+def members(request):
+    members = Member.objects.all()
+    form = FilterMembersForm(request.POST)
+
+    return render(request, 'stallion_website/members.html', {'members': members, 'form': form})
+
+
+def delete_member(request, m):
+    Member.objects.get(email=m).delete()
+    members = Member.objects.all()
+        
+    return redirect('/members', {'members': members})
+
+
+def filter_member(request):
+    form = FilterMembersForm(request.POST)
+    members = Member.objects.all()
+    if form.data['name']:
+        members = members.filter(name=form["name"].value())
+    if form.data['email']:
+        members = members.filter(email=form["email"].value())
+    if form.data['dob']:
+        members = members.filter(dob=form["dob"].value())
+    if form.data['phone_number']:
+        members = members.filter(phone_number=form["phone_number"].value())
+
+
+    return render(request, 'stallion_website/members.html', {'members': members, 'form': form})
+
+
+def update_member(request, m):
+    member = Member.objects.get(email=m)
+    form = UpdateMembersForm(initial={'name': getattr(member, 'name'), 'email': getattr(member, 'email'), 'dob': getattr(member, 'dob'), 'phone_number': getattr(member, 'phone_number')})
+    return render(request, 'stallion_website/updateMember.html', {'form': form, 'm': m})
+
+
+def save_updates(request):
+    members = Member.objects.all()
+    form = UpdateMembersForm(request.POST)
+    m = Member.objects.get(email=form['email'].value())
+    print(m)
+    form1 = UpdateMembersForm1(request.POST, instance=m)
+
+    if form1.is_valid():                                                 
+        form1.save()                                                                          
+
+    return redirect('/members', {'members': members})
+
+
+
+
+

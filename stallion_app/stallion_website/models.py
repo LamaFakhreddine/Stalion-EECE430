@@ -8,11 +8,11 @@ from django.contrib.auth.models import User
 
 class Member(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE )
-    name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=200)
-    dob = models.DateField()
-    phone_number = models.IntegerField()
+    name = models.CharField(max_length=30, null=True)
+    email = models.EmailField(max_length=100, unique=True, null=True)
+    password = models.CharField(max_length=200, null=True)
+    dob = models.DateField(null=True)
+    phone_number = models.IntegerField(null=True)
 
     def __str__(self):
         return self.name
