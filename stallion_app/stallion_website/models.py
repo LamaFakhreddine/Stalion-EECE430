@@ -2,9 +2,7 @@ from tkinter import CASCADE
 from turtle import ondrag
 from django.db import models
 import calendar
-
 from django.contrib.auth.models import User
-from django.forms import URLField
 
 # Create your models here.
 
@@ -103,6 +101,8 @@ class CourtReservations(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
 
+    def __str__(self):
+        return self.member.name + "---" + self.court.name
 
 
 
