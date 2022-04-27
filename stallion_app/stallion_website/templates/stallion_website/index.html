@@ -139,6 +139,8 @@
     </section>
 
     <!-- NEXT EVENT -->
+    <!-- If no events exist, do not render this section -->
+    {% if next_event is not None %}
     <section id="nextEvent" class="container-fluid">
       <div class="row justify-content-center">
         <h1>Next Event</h1>
@@ -175,7 +177,7 @@
             <span>{{next_event.location}}</span>
           </div>
         </div>
-  
+        <!-- EVENT BUTTONS -->
         <div class="d-flex justify-content-center py-4">
           <a
             type="button"
@@ -196,6 +198,7 @@
         </div>
       </div>
     </section>
+    {% endif %}
 
     <!-- Programs Section -->
     <section id="programs" class="container-fluid">
