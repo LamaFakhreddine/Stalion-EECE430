@@ -37,7 +37,7 @@ class Program(models.Model):
     price = models.IntegerField(default=0)
     image_url = models.URLField(max_length=300, null=True)
 
-class MemberPrograms(models.Model):
+class MemberProgram(models.Model):
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
 
@@ -94,7 +94,7 @@ class Court(models.Model):
     name = models.CharField(max_length=200, unique=True)
     image_url = models.URLField(max_length=300, null=True)
 
-class CourtReservations(models.Model):
+class CourtReservation(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     court = models.ForeignKey(Court, on_delete=models.CASCADE)
     reservation_date = models.DateField()

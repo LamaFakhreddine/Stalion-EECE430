@@ -49,6 +49,21 @@
     color: white;
 }
 
+.primary-btn-stallion-sm{
+    font-weight: 600;
+    background-color: var(--darkorange);
+    border:2px solid var(--darkorange);
+    box-shadow: 0 2px 2px #00000036
+}  
+   
+.primary-btn-stallion-sm:hover,
+.primary-btn-stallion-sm:active,
+.primary-btn-stallion-sm:focus,
+.primary-btn-stallion-sm:visited{
+    background-color: var(--orange) !important;
+    border-color: var(--orange) !important;
+}
+
 .secondary-btn-stallion-sm{
     font-weight: 600;
     background-color: transparent;

@@ -41,48 +41,49 @@
     {% include 'stallion_website/navbar.html' %}
     
     <div class="container">
-      <div class="row">
+      <div class="row" style="padding: 4rem 10rem;">
+        <h2 class="text-light pt-4 pb-5">Hello, Admin!</h2>
         <div class="col">
-          <div class="card" style="width: 18rem;">
+          <a  href="{% url 'members' %}" class="card text-center p-3" style="width: 15rem; height: 12rem;">
             <div class="card-body">
-              <h5 class="card-title">MEMBERS</h5>
-              <a href="{% url 'members' %}" class="btn btn-primary">Go</a>
+              <h5 class="card-title mb-3">MEMBERS</h5>
+              <i class="fa-solid fa-people-group fa-4x"></i>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col">
-          <div class="card" style="width: 18rem;">
+          <a href="#" class="card text-center p-3" style="width: 15rem; height: 12rem;">
             <div class="card-body">
-              <h5 class="card-title">COACHES</h5>
-              <a href="#" class="btn btn-primary">Go</a>
+              <h5 class="card-title mb-3">COACHES</h5>
+              <i class="fa-solid fa-person-chalkboard fa-4x"></i>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col">
-          <div class="card" style="width: 18rem;">
+          <a href="#" class="card text-center p-3" style="width: 15rem; height: 12rem;">
             <div class="card-body">
-              <h5 class="card-title">PROGRAMS</h5>
-              <a href="#" class="btn btn-primary">Go</a>
+              <h5 class="card-title mb-3">PROGRAMS</h5>
+              <i class="fa-solid fa-person-running fa-4x"></i>
             </div>
-          </div>
+          </a>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="padding: 0rem 10rem 4rem 10rem;">
         <div class="col">
-          <div class="card" style="width: 18rem;">
+          <a href="#" class="card text-center p-3" style="width: 15rem; height: 12rem;">
             <div class="card-body">
-              <h5 class="card-title">EVENTS</h5>
-              <a href="#" class="btn btn-primary">Go</a>
+              <h5 class="card-title mb-3">EVENTS</h5>
+              <i class="fa-solid fa-trophy fa-4x"></i>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col">
-          <div class="card" style="width: 18rem;">
+          <a href="#" class="card text-center p-3" style="width: 15rem; height: 12rem;">
             <div class="card-body">
-              <h5 class="card-title">BOOKINGS</h5>
-              <a href="#" class="btn btn-primary">Go</a>
+              <h5 class="card-title mb-3">COURTS</h5>
+              <i class="fa-solid fa-futbol fa-4x"></i>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col"></div>
     </div>
