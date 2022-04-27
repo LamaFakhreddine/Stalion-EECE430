@@ -27,7 +27,8 @@ class UpdateMembersForm(ModelForm):
 class UpdateMembersForm1(ModelForm):
     class Meta:
         model = Member
-        fields = ['name', 'dob', 'phone_number']
-    
+        fields = ['email', 'dob', 'phone_number']
+
+
 
 

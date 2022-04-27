@@ -114,7 +114,9 @@ def signup(request):
             group = Group.objects.get(name='member')
             user.groups.add(group)
             Member.objects.create(
-                user=user,
+                name=user.username,
+                email=user.email,
+
             )
 
             messages.success(request,'Account was created for' + username)
@@ -165,7 +167,8 @@ def members(request):
 
 
 def delete_member(request, m):
-    Member.objects.get(email=m).delete()
+    print(m)
+    User.objects.get(username=m).delete()
     members = Member.objects.all()
         
     return redirect('/members', {'members': members})
@@ -183,12 +186,11 @@ def filter_member(request):
     if form.data['phone_number']:
         members = members.filter(phone_number=form["phone_number"].value())
 
-
     return render(request, 'stallion_website/members.html', {'members': members, 'form': form})
 
 
 def update_member(request, m):
-    member = Member.objects.get(email=m)
+    member = Member.objects.get(name=m)
     form = UpdateMembersForm(initial={'name': getattr(member, 'name'), 'email': getattr(member, 'email'), 'dob': getattr(member, 'dob'), 'phone_number': getattr(member, 'phone_number')})
     return render(request, 'stallion_website/updateMember.html', {'form': form, 'm': m})
 
@@ -196,8 +198,7 @@ def update_member(request, m):
 def save_updates(request):
     members = Member.objects.all()
     form = UpdateMembersForm(request.POST)
-    m = Member.objects.get(email=form['email'].value())
-    print(m)
+    m = Member.objects.get(name=form['name'].value())
     form1 = UpdateMembersForm1(request.POST, instance=m)
 
     if form1.is_valid():                                                 

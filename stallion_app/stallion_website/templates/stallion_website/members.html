@@ -106,8 +106,8 @@
                     <td>{{m.email}}</td>
                     <td>{{m.dob}}</td>
                     <td>{{m.phone_number}}</td>
-                    <td><a class="btn btn-sm btn-info" href="{% url 'update_member' m.email %}">Update</a></td>
-                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_member' m.email %}">Delete</a></td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'update_member' m.name %}">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_member' m.name %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </table>
