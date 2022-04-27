@@ -115,6 +115,9 @@ def signup(request):
             user.groups.add(group)
             Member.objects.create(
                 user=user,
+                name=user.username,
+                email=user.email,
+                
             )
 
             messages.success(request,'Account was created for' + username)
