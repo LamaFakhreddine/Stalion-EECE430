@@ -19,6 +19,7 @@ class Member(models.Model):
 
 class Coach(models.Model):
     name = models.CharField(max_length=100)
+    specialty = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=200)
     dob = models.DateField()
