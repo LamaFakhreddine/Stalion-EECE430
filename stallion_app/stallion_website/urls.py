@@ -10,12 +10,18 @@ urlpatterns = [
 
     path('login/', views.loginPage, name="login"),
     path('signup/', views.signup, name="signup"),
-     path('logout/', views.logoutUser, name="logout"),
+    path('logout/', views.logoutUser, name="logout"),
 
 	path('login/memberAccount/', views.member, name="memberAccount"),
     path('login/coachAccount/', views.coach, name="coachAccount"),
     path('adminAccount/', views.admin, name="adminAccount"),
-    path('#', views.profile, name="profile")
+    path('#', views.profile, name="profile"),
+    path('members/', views.members, name="members"),
+
+    path('delete_member/<str:m>', views.delete_member, name='delete_member'),
+    path('filter_member/', views.filter_member, name='filter_member'),
+    path('update_member/<str:m>', views.update_member, name='update_member'),
+    path('save_updates/', views.save_updates, name='save_updates')
 
     
 ]
