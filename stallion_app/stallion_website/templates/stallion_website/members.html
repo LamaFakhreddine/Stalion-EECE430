@@ -42,10 +42,10 @@
     <br>
     <!-- Button trigger modal -->
 
-    <div class="col-md-10">
-        <h5>LIST OF STALLION MEMBERS</h5>
-        <hr>
-        <div class="card card-body">
+    <div class="col-md-11 mx-auto">
+        <h5 class="text-light m-5">LIST OF STALLION MEMBERS</h5>
+        <hr width="50%" class="me-auto m-5" style="color: white;">
+        <div class="card card-body m-5">
             <table class="table table-sm">
                 <form method="POST" action="{% url 'filter_member' %}">
                     {% csrf_token %}
@@ -56,32 +56,31 @@
                     <th>Phone Number</th>
                     <th></th>
                 </tr>
-
                 <td>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mt-2 mb-2">
                         {{form.name}}
                       </div>
                 </td>
                 <td>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mt-2 mb-2">
                         {{form.email}}
                     </div>
                 </td>
                 <td>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mt-2 mb-2">
                         {{form.dob}}   
                     </div>
 
                 </td>
                 <td>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mt-2 mb-2">
                         {{form.phone_number}}
                         
                     </div>
                     
                 </td>
                 <td>
-                    <input class="btn btn-sm btn-danger" type="submit" value="Filter"></input>
+                    <input class="btn btn-sm btn-danger mt-2 mb-2" type="submit" value="Filter"></input>
                 </td>
             </form>
 
@@ -89,7 +88,7 @@
             </table>
         <div class="card card-body">
             <div>
-                <h5>Total: {{members.count}}</h5>
+                <h5 class="pt-3 pb-3" style="color: var(--darkorange);">Total: {{members.count}}</h5>
             </div>
             <table class="table table-sm">
                 <tr>
