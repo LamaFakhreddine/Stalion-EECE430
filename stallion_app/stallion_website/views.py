@@ -194,13 +194,20 @@ def delete_member(request, m):
         
     return redirect('/members', {'members': members})
 
-@login_required(login_url='home')
-@allowed_users(allowed_roles=['member','coach'])
-def tickets(request):
+#@login_required(login_url='home')
+#@allowed_users(allowed_roles=['member','coach','admin'])
+def buytickets(request,pk_test): 
+    print(Event.objects.get(id=pk_test)) 
+    event = Event.objects.get(id=pk_test)
+    context = {
+        "event": event
+    }
+    
+    event.description = event.description
+
     if request.method == 'POST':
+
         username = request.POST.get('name')
-        password= request.POST.get('email')
-        phone =  request.POST.get('phone')
         ticket =  request.POST.get('select')
 
         if ticket=="Area A":
@@ -211,14 +218,18 @@ def tickets(request):
             price=50
 
         Ticket.objects.create(
-                TICKET_TYPE=ticket,
+                ticket=ticket,
                 price=price
             )
+        EventTicket.objects.create(
+                ticket=ticket,
+                member= Member.objects.get(user=request.user),
+                event=Event.objects.get(id=pk_test) 
+            )
+        
+        
+    return render(request, 'stallion_website/tickets.html', context = context)
 
-    return render(request, 'stallion_website/tickets.html')
-
-def buytickets(request):
-    return render(request, 'stallion_website/tickets.html')
 
 
 def filter_member(request):

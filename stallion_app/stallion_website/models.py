@@ -73,9 +73,9 @@ class Event(models.Model):
 
 class Ticket(models.Model):
     TICKET_TYPE = (
-        ('Area A', 'Area A'),
-        ('Area B', 'Area B'),
-        ('Area C', 'Area C')
+        ('Area A ($100)', 'Area A ($100)'),
+        ('Area B ($75)', 'Area B ($75)'),
+        ('Area C ($50)', 'Area C ($50)')
     )
     ticket = models.CharField(max_length=20, choices=TICKET_TYPE)
     price = models.IntegerField()
