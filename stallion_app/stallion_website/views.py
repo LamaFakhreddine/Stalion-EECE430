@@ -90,7 +90,12 @@ def reserve(request):
     {'courts_list' : courts_list})
 
 def reserveinfo(request):
-    return render(request, 'stallion_website/reserveinfo.html')
+    courts_list = Court.objects.all()
+    form = CourtReservations(request.POST)
+    form1 = CourtReservations(request.POST)
+    return render(request, 'stallion_website/reserveinfo.html', 
+    {'courts_list' : courts_list, 'form': form, 'form1': form1})
+
 
 @unauthenticated_user
 def loginPage(request):
@@ -102,14 +107,17 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            if request.user.groups.all()[0].name == 'member':
-                return redirect('memberAccount')
-            elif request.user.groups.all()[0].name == 'coach':
-                return redirect('coachAccount')
-            elif request.user.groups.all()[0].name == 'admin':
-                return redirect('adminAccount')
+            if  request.user.groups.all():
+                if request.user.groups.all()[0].name == 'member':
+                    return redirect('memberAccount')
+                elif request.user.groups.all()[0].name == 'coach':
+                    return redirect('coachAccount')
+                elif request.user.groups.all()[0].name == 'admin':
+                    return redirect('adminAccount')
+                else:
+                    return redirect('home')
             else:
-                return redirect('home')
+                messages.info(request, "This user has not been assigned a role, please try using another user")
         else:
             messages.info(request, "Username OR password is incorrect")
     context = {}
@@ -141,7 +149,7 @@ def signup(request):
 
             )
 
-            messages.success(request,'Account was created for' + username)
+            messages.success(request,'Account was created for ' + username)
             
             return redirect('login')
 
@@ -195,13 +203,17 @@ def delete_member(request, m):
         
     return redirect('/members', {'members': members})
 
-@login_required(login_url='home')
-@allowed_users(allowed_roles=['member','coach'])
-def tickets(request):
+def buytickets(request,pk_test):  
+    event = Event.objects.get(id=pk_test)
+    context = {
+        "event": event
+    }
+    
+    event.description = event.description
+
     if request.method == 'POST':
+
         username = request.POST.get('name')
-        password= request.POST.get('email')
-        phone =  request.POST.get('phone')
         ticket =  request.POST.get('select')
 
         if ticket=="Area A":
@@ -212,14 +224,18 @@ def tickets(request):
             price=50
 
         Ticket.objects.create(
-                TICKET_TYPE=ticket,
+                ticket=ticket,
                 price=price
             )
+        EventTicket.objects.create(
+                ticket=Ticket.objects.last(),
+                member= Member.objects.get(user=request.user),
+                event=Event.objects.get(id=pk_test) 
+            )
+        
+        
+    return render(request, 'stallion_website/tickets.html', context = context)
 
-    return render(request, 'stallion_website/tickets.html')
-
-def buytickets(request):
-    return render(request, 'stallion_website/tickets.html')
 
 
 def filter_member(request):
@@ -273,6 +289,26 @@ def enroll(request):
 
         return render(request, 'stallion_website/index.html')
 
+# def reservation(request):
+#     form = ReserveField(request.POST)
+#     form1 = ReserveField1(request.POST)
+#     print(form1['name'].value())
+#     if request.method == 'POST':
+#         print("im here")
+#         m = Member.objects.get(name=form1['name'].value())
+#         c = Court.objects.get(id=form['court'].value())
+#         rd = Court.objects.get(id=form['reservation_date'].value())
+#         s = Court.objects.get(id=form['start_time'].value())
+#         e = Court.objects.get(id=form['end_time'].value())
+#         CourtReservations.objects.create(
+#             member = m,
+#             court = c,
+#             reservation_date=rd,
+#             start_time=s,
+#             end_time=e
+#         )
+
+#         return render(request, 'stallion_website/index.html')
 
 
 

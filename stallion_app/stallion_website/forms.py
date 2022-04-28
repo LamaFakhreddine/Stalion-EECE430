@@ -42,7 +42,13 @@ class EnrollProgram(ModelForm):
 class EnrollProgram1(forms.Form):
     name = forms.CharField()
 
+# class ReserveField(ModelForm):
+#     class Meta:
+#         model = CourtReservations
+#         fields = ['court']
 
+# class ReserveField1(forms.Form):
+#     name = forms.CharField()
 
 
 

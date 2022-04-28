@@ -35,17 +35,15 @@
     <div class="container">
 
       <div class="middle">
-          <form action="{% url 'enroll' %}" method="POST">
+          <form class="form" align="center" style="margin-top: 150px; padding-top: 50px;" action="{% url 'enroll' %}" method="POST">
             {% csrf_token %}
-                {{form1.name}}
-                {{form.program}}
+                <label>Username</label> {{form1.name}}
+                <br><label>Select a Program</label>{{form.program}}</br>
               <input
                 type="submit"
                 class="btn btn-sm btn-danger mt-2 mb-2"
                 width="175px"
                 ></input>
-              <!-- <button href="{% url 'programs' %}" type="button" class="btn-secondary" data-bs-dismiss="modal">CLOSE</button> -->
-              <!-- <button href="{% url 'enroll' %}" type="button" class="btn-secondary2" data-bs-dismiss="modal" aria-label="Close">ENROLL</button> -->
           </form>
       </div>
   </div>

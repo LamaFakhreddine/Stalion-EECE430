@@ -71,6 +71,7 @@
                 You want to give football your all? We've got the right program that can help you fulfill your potential.
               </p>
               <button
+                href="{% url 'programinfo' %}"
                 type="button"
                 class="btn btn-primary primary-btn-stallion"
               >
@@ -90,7 +91,7 @@
                 Elevate your basketball skills to the next level with our professional athletes!
               </p>
               <a
-                href="{% url 'programs' %}"
+                href="{% url 'programinfo' %}"
                 type="button"
                 class="btn btn-primary primary-btn-stallion"
                 width="175px"
@@ -159,6 +160,9 @@
           <div class="card-group">
             {% for program in programs_list %}
             <div class="card program-card">
+              <a href="{% url 'programinfo' %}"
+              style="color:white"
+              >
               <img
                 src='{{program.image_url}}'
                 style="object-fit: contain"
@@ -167,6 +171,7 @@
               />
               <div class="card-img-overlay">
                 <h5 class="card-title">{{program.name}}</h5>
+                
                 <div class="card-text">
                   <i class="bi bi-person-fill"></i>
                   <div>{{program.coach.name}}</div>
@@ -175,10 +180,11 @@
                   <i class="bi bi-calendar-fill"></i>
                   <div>{{program.start_time}} - {{program.end_time}}</div>
                 </div>
-                <div class="card-text">
+                <!-- <div class="card-text">
                   <i class="bi bi-geo-alt-fill"></i>
                   <div>Westward Building Court 1</div>
-                </div>
+                </div> -->
+                
               </div>
             </div>
             
