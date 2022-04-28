@@ -98,14 +98,17 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            if request.user.groups.all()[0].name == 'member':
-                return redirect('memberAccount')
-            elif request.user.groups.all()[0].name == 'coach':
-                return redirect('coachAccount')
-            elif request.user.groups.all()[0].name == 'admin':
-                return redirect('adminAccount')
+            if  request.user.groups.all():
+                if request.user.groups.all()[0].name == 'member':
+                    return redirect('memberAccount')
+                elif request.user.groups.all()[0].name == 'coach':
+                    return redirect('coachAccount')
+                elif request.user.groups.all()[0].name == 'admin':
+                    return redirect('adminAccount')
+                else:
+                    return redirect('home')
             else:
-                return redirect('home')
+                messages.info(request, "This user has not been assigned a role, please try using another user")
         else:
             messages.info(request, "Username OR password is incorrect")
     context = {}
@@ -137,7 +140,7 @@ def signup(request):
 
             )
 
-            messages.success(request,'Account was created for' + username)
+            messages.success(request,'Account was created for ' + username)
             
             return redirect('login')
 
