@@ -17,12 +17,16 @@ class Member(models.Model):
         return self.name
 
 class Coach(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE )
     name = models.CharField(max_length=100)
     specialty = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=200)
     dob = models.DateField()
     phone_number = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
 class Admin(models.Model):
     email = models.EmailField(max_length=100, unique=True)
@@ -35,6 +39,9 @@ class Program(models.Model):
     end_time = models.TimeField()
     price = models.IntegerField(default=0)
     image_url = models.URLField(max_length=300, null=True)
+
+    def __str__(self):
+        return self.name
 
 class MemberPrograms(models.Model):
     program = models.ForeignKey(Program, on_delete=models.CASCADE)

@@ -173,7 +173,6 @@ def members(request):
 
 
 def delete_member(request, m):
-    print(m)
     User.objects.get(username=m).delete()
     members = Member.objects.all()
         
@@ -192,6 +191,7 @@ def filter_member(request):
     if form.data['phone_number']:
         members = members.filter(phone_number=form["phone_number"].value())
 
+    form = FilterMembersForm()
     return redirect('/members', {'members': members})
 
 
@@ -214,6 +214,197 @@ def save_updates(request):
         form2.save()                                                                   
 
     return redirect('/members', {'members': members})
+
+
+
+def coaches(request):
+    coaches = Coach.objects.all()
+    form = FilterCoachesForm(request.POST)
+
+    return render(request, 'stallion_website/coaches.html', {'coaches': coaches, 'form': form})
+
+
+def delete_coaches(request, m):
+    User.objects.get(username=m).delete()
+    coaches = Coach.objects.all()
+        
+    return redirect('/coaches', {'coaches': coaches})
+
+
+def filter_coaches(request):
+    form = FilterCoachesForm(request.POST)
+    coaches = Coach.objects.all()
+    if form.data['name']:
+        coaches = coaches.filter(name=form["name"].value())
+    if form.data['email']:
+        coaches = coaches.filter(email=form["email"].value())
+    if form.data['dob']:
+        coaches = coaches.filter(dob=form["dob"].value())
+    if form.data['phone_number']:
+        coaches = coaches.filter(phone_number=form["phone_number"].value())
+    if form.data['specialty']:
+        coaches = coaches.filter(phone_number=form["specialty"].value())
+
+    form = FilterCoachesForm()
+
+    return redirect('/coaches', {'coaches': coaches})
+
+
+def update_coaches(request, m):
+    coaches = Coach.objects.get(name=m)
+    form = UpdateCoachesForm(initial={'name': getattr(coaches, 'name'), 'email': getattr(coaches, 'email'), 'dob': getattr(coaches, 'dob'), 'phone_number': getattr(coaches, 'phone_number'), 'specialty': getattr(coaches, 'specialty')})
+    return render(request, 'stallion_website/updateCoaches.html', {'form': form, 'm': m})
+
+
+def save_updates2(request):
+    coaches = Coach.objects.all()
+    form = UpdateCoachesForm(request.POST)
+    c = Coach.objects.get(name=form['name'].value())
+    u = User.objects.get(username=form['name'].value())
+    form1 = UpdateCoachesForm1(request.POST, instance=c)
+    form2 = UpdateUserForm(request.POST, instance=u)
+
+    if form1.is_valid():                                                 
+        form1.save()       
+        form2.save()                                                                   
+
+    return redirect('/coaches', {'coaches': coaches})
+
+def add_coaches(request):
+    form = AddCoachesForm(request.POST)
+    form1 = FilterCoachesForm(request.POST)
+    if request.method == "GET":
+        return render(request, 'stallion_website/addCoaches.html', {'form': form})
+    else:
+        if form.is_valid():
+            u = User.objects.create(username=form['name'].value(), email=form['email'].value(), password=form['password'].value())
+            Coach.objects.create(user=u, name=form['name'].value(), email=form['email'].value(), dob=form['dob'].value(), phone_number=form['phone_number'].value(), password=form['password'].value(), specialty=form['specialty'].value())
+            coaches = Coach.objects.all()
+            return redirect('/coaches', {'coaches': coaches, 'form': form})
+
+
+def programs_admin(request):
+    programs = Program.objects.all()
+    form = FilterProgramsForm(request.POST)
+
+    return render(request, 'stallion_website/programs-admin.html', {'programs': programs, 'form': form})
+
+
+def delete_programs(request, m):
+    Program.objects.get(name=m).delete()
+    programs = Program.objects.all()
+        
+    return redirect('/programs_admin', {'programs': programs})
+
+
+def filter_programs(request):
+    form = FilterProgramsForm(request.POST)
+    programs = Program.objects.all()
+
+    if form.data['name']:
+        programs = programs.filter(name=form["name"].value())
+    if form.data['coach']:
+        c = Coach.objects.get(name=form["coach"].value())
+        programs = programs.filter(coach=c)
+    if form.data['start_time']:
+        programs = programs.filter(start_time=form["start_time"].value())
+    if form.data['end_time']:
+        programs = programs.filter(end_time=form["end_time"].value())
+    if form.data['price']:
+        programs = programs.filter(price=form["price"].value())
+
+    form = FilterProgramsForm()
+
+    return render(request, 'stallion_website/programs-admin.html', {'programs': programs, 'form': form})
+
+
+def update_programs(request, m):
+    programs = Program.objects.get(name=m)
+    form = UpdateProgramsForm(initial={'name': getattr(programs, 'name'), 'coach': getattr(programs, 'coach'), 'start_time': getattr(programs, 'start_time'), 'end_time': getattr(programs, 'end_time'), 'price': getattr(programs, 'price'), 'image_url': getattr(programs, 'image_url')})
+    return render(request, 'stallion_website/updatePrograms.html', {'form': form, 'm': m})
+
+
+def save_updates3(request):
+    programs = Program.objects.all()
+    form = UpdateProgramsForm(request.POST)
+    p = Program.objects.get(name=form['name'].value())
+    form1 = UpdateProgramsForm(request.POST, instance=p)
+
+    if form1.is_valid():                                                 
+        form1.save()                                                                
+
+    return redirect('/programs_admin', {'programs': programs})
+
+def add_programs(request):
+    form = UpdateProgramsForm(request.POST)
+    if request.method == "GET":
+        return render(request, 'stallion_website/addPrograms.html', {'form': form})
+    else:
+        if form.is_valid():
+            c = Coach.objects.get(id=form['coach'].value())
+            Program.objects.create(name=form['name'].value(), coach=c, start_time=form['start_time'].value(), end_time=form['end_time'].value(), price=form['price'].value(), image_url=form['image_url'].value())
+            programs = Program.objects.all()
+            return redirect('/programs_admin', {'programs': programs, 'form': form})
+
+
+def courts(request):
+    courts = Court.objects.all()
+    form = FilterCourtsForm(request.POST)
+
+    return render(request, 'stallion_website/courts.html', {'courts': courts, 'form': form})
+
+
+def delete_courts(request, m):
+    Court.objects.get(name=m).delete()
+    courts = Court.objects.all()
+        
+    return redirect('/courts', {'courts': courts})
+
+
+def filter_courts(request):
+    form = FilterCourtsForm(request.POST)
+    courts = Court.objects.all()
+
+    if form.data['name']:
+        courts = courts.filter(name=form["name"].value())
+
+    form = FilterCourtsForm()
+    return render(request, 'stallion_website/courts.html', {'courts': courts, 'form': form})
+
+
+def update_courts(request, m):
+    courts = Court.objects.get(name=m)
+    form = UpdateProgramsForm(initial={'name': getattr(courts, 'name'),'image_url': getattr(courts, 'image_url')})
+    return render(request, 'stallion_website/updateCourts.html', {'form': form, 'm': m})
+
+
+def save_updates4(request):  
+    courts = Court.objects.all()
+    form = UpdateCourtsForm(request.POST)
+    p = Court.objects.get(name=form['name'].value())
+    form1 = UpdateCourtsForm(request.POST, instance=p)
+
+    if form1.is_valid():                                                 
+        form1.save()                                                         
+
+    return redirect('/courts', {'courts': courts})
+
+def add_courts(request):
+    form = UpdateCourtsForm(request.POST)
+    if request.method == "GET":
+        return render(request, 'stallion_website/addCourts.html', {'form': form})
+    else:
+        if form.is_valid():
+            Court.objects.create(name=form['name'].value(), image_url=form['image_url'].value())
+            courts = Court.objects.all()
+            return redirect('/courts', {'courts': courts, 'form': form})
+
+
+
+
+
+        
+
 
 
 
