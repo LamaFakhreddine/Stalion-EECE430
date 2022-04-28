@@ -14,27 +14,19 @@ html, body{
     display: inline;
     width: auto;
     height: 500px;
-    margin-top: 230px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
-.left{
-    border: solid 1.5px #ff521b;
-    width: 45%;
-    height: 550px;
-    background-color: #fc9e4f;
-    position: absolute;
-    top: 150px;
-    left: 20px;
-}
-.right{
+
+.middle{
     border: solid 1.5px #ff521b;
     width: 52%;
-    height: 550px;
+    height: 500px;
     background-color: white;
     position: absolute;
-    top: 150px;
-    right: 20px;
+    top: 50px;
+    right: 350px;
 }
 .h1signup{
     background-color: #fc9e4f;
@@ -87,7 +79,7 @@ form{
     display: flex;
     
 }
-.select{
+.select2{
     background-color: white;
     color: #999999;
     margin-top: 30px;

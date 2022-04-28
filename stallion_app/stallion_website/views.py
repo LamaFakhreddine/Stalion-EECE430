@@ -79,6 +79,12 @@ def programs(request):
 def programinfo(request):
     return render(request, 'stallion_website/programinfo.html')
 
+def reserve(request):
+    courts_list = Court.objects.all()
+    print(courts_list)
+    return render(request, 'stallion_website/reserve.html', 
+    {'courts_list' : courts_list})
+
 def reserveinfo(request):
     return render(request, 'stallion_website/reserveinfo.html')
 

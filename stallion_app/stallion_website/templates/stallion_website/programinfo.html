@@ -33,21 +33,23 @@
 
 
     <div class="container">
-      <div class="left">
-          <h1 class="h1signup">FOOTBALL CLASSES</h1>
-          <h2 class="h2signup">COURSE DETAILS</h2>
-          <p class="psignup">details here</p>
-          <p class="psignup2">Please note that registration will be revoked if amount due is not paid prior to the first registered class</p>
-      </div>
-      <div class="right">
+
+      <div class="middle">
           <form>
               <input type="text" placeholder="First name" class="name" required>
               <input type="text" placeholder="Last name" class="name" required>
               <input type="email" placeholder="Email" class="form-control" required>
               <input type="text" placeholder="Phone Number" class="form-control" required>
+              <p class="psignup2">Please note that registration will be revoked if amount due is not paid prior to the first registered class</p>
               <div class="divselect">
                   <br>
-                  <select class="select" style="width:360px" required>
+                  <select class="select" style="width:500px" required>
+                    <option value="" disabled selected>Program</option>
+                    <option value="Male">0 to 5</option> 
+                    <option value="Female">5 to 10</option>
+                    <option value="Other">Other</option>
+                </select>
+                  <select class="select2" style="width:360px" required>
                       <option value="" disabled selected>Age</option>
                       <option value="Male">0 to 5</option> 
                       <option value="Female">5 to 10</option>
