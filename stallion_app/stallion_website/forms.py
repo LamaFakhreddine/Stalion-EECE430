@@ -29,6 +29,11 @@ class UpdateMembersForm1(ModelForm):
         model = Member
         fields = ['email', 'dob', 'phone_number']
 
+class UpdateUserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['email']
+
 
 
 
