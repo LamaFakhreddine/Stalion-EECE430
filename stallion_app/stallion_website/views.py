@@ -179,6 +179,32 @@ def delete_member(request, m):
         
     return redirect('/members', {'members': members})
 
+@login_required(login_url='home')
+@allowed_users(allowed_roles=['member','coach'])
+def tickets(request):
+    if request.method == 'POST':
+        username = request.POST.get('name')
+        password= request.POST.get('email')
+        phone =  request.POST.get('phone')
+        ticket =  request.POST.get('select')
+
+        if ticket=="Area A":
+            price=100
+        elif ticket=="Area B":
+            price=75
+        else:
+            price=50
+
+        Ticket.objects.create(
+                TICKET_TYPE=ticket,
+                price=price
+            )
+
+    return render(request, 'stallion_website/tickets.html')
+
+def buytickets(request):
+    return render(request, 'stallion_website/tickets.html')
+
 
 def filter_member(request):
     form = FilterMembersForm(request.POST)
