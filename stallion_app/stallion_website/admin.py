@@ -12,7 +12,7 @@ admin.site.register(Ticket)
 admin.site.register(EventTicket)
 
 admin.site.register(Program)
-admin.site.register(MemberProgram)
+admin.site.register(MemberPrograms)
 
 admin.site.register(Court)
-admin.site.register(CourtReservation)
+admin.site.register(CourtReservations)
