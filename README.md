@@ -1,2 +1,7 @@
 # Stalion-EECE430
-A website developed for Stallion Sports Club. 
+This project is the website developed for Stallion Sports Club. 
+
+---- How to Run ----
+--------------------
+1- 
+
