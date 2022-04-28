@@ -125,6 +125,7 @@ def signup(request):
             group = Group.objects.get(name='member')
             user.groups.add(group)
             Member.objects.create(
+                user=user,
                 name=user.username,
                 email=user.email,
 
@@ -184,6 +185,32 @@ def delete_member(request, m):
         
     return redirect('/members', {'members': members})
 
+@login_required(login_url='home')
+@allowed_users(allowed_roles=['member','coach'])
+def tickets(request):
+    if request.method == 'POST':
+        username = request.POST.get('name')
+        password= request.POST.get('email')
+        phone =  request.POST.get('phone')
+        ticket =  request.POST.get('select')
+
+        if ticket=="Area A":
+            price=100
+        elif ticket=="Area B":
+            price=75
+        else:
+            price=50
+
+        Ticket.objects.create(
+                TICKET_TYPE=ticket,
+                price=price
+            )
+
+    return render(request, 'stallion_website/tickets.html')
+
+def buytickets(request):
+    return render(request, 'stallion_website/tickets.html')
+
 
 def filter_member(request):
     form = FilterMembersForm(request.POST)
@@ -197,7 +224,7 @@ def filter_member(request):
     if form.data['phone_number']:
         members = members.filter(phone_number=form["phone_number"].value())
 
-    return render(request, 'stallion_website/members.html', {'members': members, 'form': form})
+    return redirect('/members', {'members': members})
 
 
 def update_member(request, m):
@@ -210,10 +237,13 @@ def save_updates(request):
     members = Member.objects.all()
     form = UpdateMembersForm(request.POST)
     m = Member.objects.get(name=form['name'].value())
+    u = User.objects.get(username=form['name'].value())
     form1 = UpdateMembersForm1(request.POST, instance=m)
+    form2 = UpdateUserForm(request.POST, instance=u)
 
     if form1.is_valid():                                                 
-        form1.save()                                                                          
+        form1.save()       
+        form2.save()                                                                   
 
     return redirect('/members', {'members': members})
 
