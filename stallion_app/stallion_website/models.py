@@ -36,6 +36,9 @@ class Program(models.Model):
     price = models.IntegerField(default=0)
     image_url = models.URLField(max_length=300, null=True)
 
+    def __str__(self):
+        return self.name
+
 class MemberPrograms(models.Model):
     program = models.ForeignKey(Program, on_delete=models.CASCADE)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)

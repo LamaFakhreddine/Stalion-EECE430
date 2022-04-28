@@ -34,6 +34,15 @@ class UpdateUserForm(ModelForm):
         model = User
         fields = ['email']
 
+class EnrollProgram(ModelForm):
+    class Meta:
+        model = MemberPrograms
+        fields = ['program']
+
+class EnrollProgram1(forms.Form):
+    name = forms.CharField()
+
+
 
 
 

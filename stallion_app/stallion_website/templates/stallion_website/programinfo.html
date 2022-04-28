@@ -35,38 +35,17 @@
     <div class="container">
 
       <div class="middle">
-          <form>
-              <input type="text" placeholder="First name" class="name" required>
-              <input type="text" placeholder="Last name" class="name" required>
-              <input type="email" placeholder="Email" class="form-control" required>
-              <input type="text" placeholder="Phone Number" class="form-control" required>
-              <p class="psignup2">Please note that registration will be revoked if amount due is not paid prior to the first registered class</p>
-              <div class="divselect">
-                  <br>
-                  <select class="select" style="width:500px" required>
-                    <option value="" disabled selected>Program</option>
-                    <option value="Male">0 to 5</option> 
-                    <option value="Female">5 to 10</option>
-                    <option value="Other">Other</option>
-                </select>
-                  <select class="select2" style="width:360px" required>
-                      <option value="" disabled selected>Age</option>
-                      <option value="Male">0 to 5</option> 
-                      <option value="Female">5 to 10</option>
-                      <option value="Other">Other</option>
-                  </select>
-                  <form action="course" class="course">
-                      <p class="course1">Course:</p>
-                      <input type="radio" id="Beginner" value="Beginner" class="courses">
-                      <label class="course" for="Beginner">Beginner</label><br>
-                      <input class="courses2" type="radio" id="Intermediate" value="Intermediate">
-                      <label class="course2" for="Intermediate">Intermediate</label><br>
-                      <input class="courses3" type="radio" id="Advanced" value="Advanced">
-                      <label class="course3" for="Advanced">Advanced</label>
-              </div>
-              <br>
-              <button type="button" class="btn-secondary" data-bs-dismiss="modal">CLOSE</button>
-              <button type="button" class="btn-secondary2" data-bs-dismiss="modal" aria-label="Close">ENROLL</button>
+          <form action="{% url 'enroll' %}" method="POST">
+            {% csrf_token %}
+                {{form1.name}}
+                {{form.program}}
+              <input
+                type="submit"
+                class="btn btn-sm btn-danger mt-2 mb-2"
+                width="175px"
+                ></input>
+              <!-- <button href="{% url 'programs' %}" type="button" class="btn-secondary" data-bs-dismiss="modal">CLOSE</button> -->
+              <!-- <button href="{% url 'enroll' %}" type="button" class="btn-secondary2" data-bs-dismiss="modal" aria-label="Close">ENROLL</button> -->
           </form>
       </div>
   </div>

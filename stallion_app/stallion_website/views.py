@@ -77,7 +77,11 @@ def programs(request):
     {'programs_list' : programs_list})
 
 def programinfo(request):
-    return render(request, 'stallion_website/programinfo.html')
+    programs_list = Program.objects.all()
+    form = EnrollProgram(request.POST)
+    form1 = EnrollProgram1(request.POST)
+    return render(request, 'stallion_website/programinfo.html', 
+    {'programs_list' : programs_list, 'form': form, 'form1': form1})
 
 def reserve(request):
     courts_list = Court.objects.all()
@@ -252,6 +256,25 @@ def save_updates(request):
         form2.save()                                                                   
 
     return redirect('/members', {'members': members})
+
+
+def enroll(request):
+    form = EnrollProgram(request.POST)
+    form1 = EnrollProgram1(request.POST)
+    print(form1['name'].value())
+    if request.method == 'POST':
+        print("im here")
+        m = Member.objects.get(name=form1['name'].value())
+        p = Program.objects.get(id=form['program'].value())
+        MemberPrograms.objects.create(
+            member = m,
+            program = p
+        )
+
+        return render(request, 'stallion_website/index.html')
+
+
+
 
 
 
