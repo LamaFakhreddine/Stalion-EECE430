@@ -194,10 +194,7 @@ def delete_member(request, m):
         
     return redirect('/members', {'members': members})
 
-#@login_required(login_url='home')
-#@allowed_users(allowed_roles=['member','coach','admin'])
-def buytickets(request,pk_test): 
-    print(Event.objects.get(id=pk_test)) 
+def buytickets(request,pk_test):  
     event = Event.objects.get(id=pk_test)
     context = {
         "event": event
@@ -222,7 +219,7 @@ def buytickets(request,pk_test):
                 price=price
             )
         EventTicket.objects.create(
-                ticket=ticket,
+                ticket=Ticket.objects.last(),
                 member= Member.objects.get(user=request.user),
                 event=Event.objects.get(id=pk_test) 
             )
