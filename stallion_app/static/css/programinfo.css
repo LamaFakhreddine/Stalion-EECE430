@@ -1,0 +1,177 @@
+@import url("variables.css");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    background: var(--darkgrey);
+}
+
+.container{
+    border: transparent;
+    display: inline;
+    width: auto;
+    height: 500px;
+    margin-top: 230px;
+    display: flex;
+    justify-content: center;
+}
+.left{
+    border: solid 1.5px #ff521b;
+    width: 45%;
+    height: 550px;
+    background-color: #fc9e4f;
+    position: absolute;
+    top: 150px;
+    left: 20px;
+}
+.right{
+    border: solid 1.5px #ff521b;
+    width: 52%;
+    height: 550px;
+    background-color: white;
+    position: absolute;
+    top: 150px;
+    right: 20px;
+}
+.h1signup{
+    background-color: #fc9e4f;
+    color: black;
+    font-size: 40px;
+    margin-top: 40px;
+    margin-left: 30px;
+}
+.h2signup{
+    background-color: #fc9e4f;
+    color: #2b2c28;
+    font-size: 30px;
+    margin-top: 60px;
+    margin-left: 30px;
+}
+.psignup{
+    background-color: #fc9e4f;
+    color: #2b2c28;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.psignup2{
+    background-color: #fc9e4f;
+    color: #ff521b;
+    font-size: 15px;
+    margin-top: 250px;
+    margin-left: 30px;
+}
+form{
+    background-color: white;
+}
+.name{
+    background-color: white;
+    padding: 10px 50px;
+    margin-top: 50px;
+    margin-left: 60px;
+    text-align: center;
+}
+.form-control{
+    background-color: white;
+    width: 630px;
+    padding: 10px 10px;
+    margin-left: 60px;
+    margin-top: 30px;
+    text-align: center;
+}
+.divselect{
+    background-color: white;
+    display: flex;
+    
+}
+.select{
+    background-color: white;
+    color: #999999;
+    margin-top: 30px;
+    margin-left: 60px;
+    font-size: 20px;
+}
+
+.course{
+    background-color: white;
+    position: absolute;
+    top: 330px;
+    left: 150px;
+    font-size: 18px;
+    color: #2b2c28;
+}
+.course1{
+    background-color: white;
+    position: absolute;
+    top: 330px;
+    left: 60px;
+    font-size: 18px;
+    color: #2b2c28;
+}
+.course2{
+    background-color: white;
+    position: absolute;
+    top: 360px;
+    left: 150px;
+    font-size: 18px;
+    color: #2b2c28;
+}
+.course3{
+    background-color: white;
+    position: absolute;
+    top: 390px;
+    left: 150px;
+    font-size: 18px;
+    color: #2b2c28;
+}
+.courses{
+    background-color: white;
+    position: absolute;
+    top: 340px;
+    left: 130px;
+    font-size: 18px;
+    color: #2b2c28;
+}
+.courses2{
+    background-color: white;
+    position: absolute;
+    top: 370px;
+    left: 130px;
+    font-size: 18px;
+    color: #2b2c28;
+}
+.courses3{
+    background-color: white;
+    position: absolute;
+    top: 400px;
+    left: 130px;
+    font-size: 18px;
+    color: #2b2c28;
+}
+.btn-secondary{
+    background-color: #ff521b;
+    color: white;
+    border: solid 1.5px #2b2c28;
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 6px;
+    position: absolute;
+    top: 470px;
+    left: 60px;
+}
+.btn-secondary2{
+    background-color: #ff521b;
+    color: white;
+    border: solid 1.5px #2b2c28;
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 6px;
+    position: absolute;
+    top: 470px;
+    right: 50px;
+}

@@ -70,6 +70,11 @@ def events(request):
 def about(request):
     return render(request, 'stallion_website/About.html')
 
+def programs(request):
+    programs_list = Program.objects.all()
+    return render(request, 'stallion_website/programs.html', 
+    {'programs_list' : programs_list})
+
 
 @unauthenticated_user
 def loginPage(request):
