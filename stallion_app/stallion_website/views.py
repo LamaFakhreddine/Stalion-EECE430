@@ -72,9 +72,15 @@ def about(request):
 
 def programs(request):
     programs_list = Program.objects.all()
+    print(programs_list)
     return render(request, 'stallion_website/programs.html', 
     {'programs_list' : programs_list})
 
+def programinfo(request):
+    return render(request, 'stallion_website/programinfo.html')
+
+def reserveinfo(request):
+    return render(request, 'stallion_website/reserveinfo.html')
 
 @unauthenticated_user
 def loginPage(request):
