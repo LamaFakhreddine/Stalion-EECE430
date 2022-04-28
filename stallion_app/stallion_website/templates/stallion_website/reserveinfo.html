@@ -29,27 +29,76 @@
 
   <body>
     
-
+    <!-- NAVBAR -->
+    {% include 'stallion_website/navbar.html' %}
 
 
     <div class="container">
-
-      <div class="middle">
+      <div class="left">
+        <div class="modal-header">
+            <h5 class="modal-title">FOOTBALL FIELD</h5>
+            <p class="p">Call 00 961 70 000 000 for field reservation</p>
+         </div>
+         <div class="modal-body">
+             <label for="date" class="label">Pick a date to show availability</label> <br>
+             <input type="date" id="calendar" name="calendar">
+             <div class="container">
+                 <div class="time1">
+                     <div class="square1"></div>
+                     <p class="p1">7AM to 8AM</p>
+                 </div>
+                 <div class="time2">
+                     <div class="square2"></div>
+                     <p class="p2">8AM to 9AM</p>
+                 </div>
+                 <div class="time3">
+                     <div class="square3"></div>
+                     <p class="p3">9AM to 10AM</p>
+                 </div>
+                 <div class="time4">
+                     <div class="square4"></div>
+                     <p class="p4">10AM to 11AM</p>
+                 </div>
+                 <div class="time5">
+                     <div class="square5"></div>
+                     <p class="p5">11AM to 12PM</p>
+                 </div>
+                 <div class="time11">
+                     <div class="square11"></div>
+                     <p class="p11">12PM to 1PM</p>
+                 </div>
+                 <div class="time21">
+                     <div class="square21"></div>
+                     <p class="p21">1PM to 2PM</p>
+                 </div>
+                 <div class="time31">
+                     <div class="square31"></div>
+                     <p class="p31">2PM to 3PM</p>
+                 </div>
+                 <div class="time41">
+                     <div class="square41"></div>
+                     <p class="p41">3PM to 4PM</p>
+                 </div>
+                 <div class="time51">
+                     <div class="square51"></div>
+                     <p class="p51">4PM to 5PM</p>
+                 </div>
+             </div>
+         </div>
+         <div class="modal-footer">
+              <button type="button" class="btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+              <button type="button" class="btn-2" data-bs-dismiss="modal">RESERVE</button>
+         </div>
+      </div>
+      <div class="right">
           <form>
               <input type="text" placeholder="First name" class="name" required>
               <input type="text" placeholder="Last name" class="name" required>
               <input type="email" placeholder="Email" class="form-control" required>
               <input type="text" placeholder="Phone Number" class="form-control" required>
-              <p class="psignup2">Please note that registration will be revoked if amount due is not paid prior to the first registered class</p>
               <div class="divselect">
                   <br>
-                  <select class="select" style="width:500px" required>
-                    <option value="" disabled selected>Program</option>
-                    <option value="Male">0 to 5</option> 
-                    <option value="Female">5 to 10</option>
-                    <option value="Other">Other</option>
-                </select>
-                  <select class="select2" style="width:360px" required>
+                  <select class="select" style="width:360px" required>
                       <option value="" disabled selected>Age</option>
                       <option value="Male">0 to 5</option> 
                       <option value="Female">5 to 10</option>
@@ -72,6 +121,7 @@
   </div>
   
    
+    {% include 'stallion_website/footer.html' %}
   
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"

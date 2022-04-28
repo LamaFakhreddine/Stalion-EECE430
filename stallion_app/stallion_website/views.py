@@ -72,9 +72,21 @@ def about(request):
 
 def programs(request):
     programs_list = Program.objects.all()
+    print(programs_list)
     return render(request, 'stallion_website/programs.html', 
     {'programs_list' : programs_list})
 
+def programinfo(request):
+    return render(request, 'stallion_website/programinfo.html')
+
+def reserve(request):
+    courts_list = Court.objects.all()
+    print(courts_list)
+    return render(request, 'stallion_website/reserve.html', 
+    {'courts_list' : courts_list})
+
+def reserveinfo(request):
+    return render(request, 'stallion_website/reserveinfo.html')
 
 @unauthenticated_user
 def loginPage(request):
@@ -86,14 +98,17 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            if request.user.groups.all()[0].name == 'member':
-                return redirect('memberAccount')
-            elif request.user.groups.all()[0].name == 'coach':
-                return redirect('coachAccount')
-            elif request.user.groups.all()[0].name == 'admin':
-                return redirect('adminAccount')
+            if  request.user.groups.all():
+                if request.user.groups.all()[0].name == 'member':
+                    return redirect('memberAccount')
+                elif request.user.groups.all()[0].name == 'coach':
+                    return redirect('coachAccount')
+                elif request.user.groups.all()[0].name == 'admin':
+                    return redirect('adminAccount')
+                else:
+                    return redirect('home')
             else:
-                return redirect('home')
+                messages.info(request, "This user has not been assigned a role, please try using another user")
         else:
             messages.info(request, "Username OR password is incorrect")
     context = {}
@@ -125,7 +140,7 @@ def signup(request):
 
             )
 
-            messages.success(request,'Account was created for' + username)
+            messages.success(request,'Account was created for ' + username)
             
             return redirect('login')
 
@@ -177,6 +192,40 @@ def delete_member(request, m):
     members = Member.objects.all()
         
     return redirect('/members', {'members': members})
+
+def buytickets(request,pk_test):  
+    event = Event.objects.get(id=pk_test)
+    context = {
+        "event": event
+    }
+    
+    event.description = event.description
+
+    if request.method == 'POST':
+
+        username = request.POST.get('name')
+        ticket =  request.POST.get('select')
+
+        if ticket=="Area A":
+            price=100
+        elif ticket=="Area B":
+            price=75
+        else:
+            price=50
+
+        Ticket.objects.create(
+                ticket=ticket,
+                price=price
+            )
+        EventTicket.objects.create(
+                ticket=Ticket.objects.last(),
+                member= Member.objects.get(user=request.user),
+                event=Event.objects.get(id=pk_test) 
+            )
+        
+        
+    return render(request, 'stallion_website/tickets.html', context = context)
+
 
 
 def filter_member(request):

@@ -73,6 +73,7 @@
   
         <div class="d-flex justify-content-center py-4">
           <a
+            href="{% url 'buytickets' next_event.id %}"
             type="button"
             class="btn btn-primary primary-btn-stallion"
             width="175px"
@@ -137,6 +138,7 @@
                     </div>
                     <div class="ms-auto mt-auto mb-auto d-flex align-items-center" style="border-left: 1px solid #7c7c7c54; height:70%;">
                       <a
+                      href="{% url 'buytickets' event.id %}"
                       type="button"
                       class=" btn  secondary-btn-stallion-sm">
                       Buy Tickets</a>
