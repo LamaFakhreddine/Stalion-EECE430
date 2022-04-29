@@ -11,7 +11,7 @@ urlpatterns = [
     path('programinfo/', views.programinfo, name="programinfo"),
     path('reserve/', views.reserve, name="reserve"),
     path('reserveinfo/', views.reserveinfo, name="reserveinfo"),
-    path('buytickets/', views.buytickets, name="buytickets"),
+    path('buytickets/<str:pk_test>', views.buytickets, name="buytickets"),
     path('enroll/', views.enroll, name="enroll"),
     # path('reservation/', views.reservation, name="reservation"),
 
