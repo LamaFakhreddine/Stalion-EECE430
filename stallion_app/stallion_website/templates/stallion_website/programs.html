@@ -70,13 +70,13 @@
               <p>
                 You want to give football your all? We've got the right program that can help you fulfill your potential.
               </p>
-              <button
+              <a
                 href="{% url 'programinfo' %}"
                 type="button"
                 class="btn btn-primary primary-btn-stallion"
               >
                 Join Us
-              </button>
+            </a>
             </div>
           </div>
           <div id="carouselItem2" class="carousel-item">
@@ -113,6 +113,7 @@
                 Be part of our Stallion's women volleyball team and compete in local and international volleyball tournaments.
               </p>
               <a
+                href="{% url 'programinfo' %}"
                 type="button"
                 class="btn btn-primary primary-btn-stallion"
                 href="{% url 'programinfo' %}"
@@ -180,6 +181,10 @@
                 <div class="card-text">
                   <i class="bi bi-calendar-fill"></i>
                   <div>{{program.start_time}} - {{program.end_time}}</div>
+                </div>
+                <div class="card-text">
+                  <i class="bi bi-cash-stack"></i>
+                  <div>${{program.price}}</div>
                 </div>
                 <!-- <div class="card-text">
                   <i class="bi bi-geo-alt-fill"></i>

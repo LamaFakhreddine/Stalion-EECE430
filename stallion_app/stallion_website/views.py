@@ -160,7 +160,10 @@ def signup(request):
 @login_required(login_url='home')
 @allowed_users(allowed_roles=['member'])
 def member(request):
-    return render(request, 'stallion_website/memberAccount.html')
+    memberProgs = (MemberPrograms.objects.filter(member=Member.objects.get(user=request.user))).all()
+    memberEventsTick = (EventTicket.objects.filter(member=Member.objects.get(user=request.user))).all()
+    memberReservations = (CourtReservations.objects.filter(member=Member.objects.get(user=request.user))).all()
+    return render(request, 'stallion_website/memberAccount.html', {'memberProgs': memberProgs, 'memberEventsTick':memberEventsTick, 'memberReservations':memberReservations})
 
 
 @login_required(login_url='home')

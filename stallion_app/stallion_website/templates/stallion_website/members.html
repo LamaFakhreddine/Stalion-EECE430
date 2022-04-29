@@ -43,8 +43,13 @@
     <!-- Button trigger modal -->
 
     <div class="col-md-11 mx-auto">
-        <h5 class="text-light m-5">LIST OF STALLION MEMBERS</h5>
-        <hr width="50%" class="me-auto m-5" style="color: white;">
+        <div class="d-flex m-5 align-items-center">
+            <h5 class="text-light">LIST OF STALLION MEMBERS</h5>
+            <a href="/adminAccount" type="button" class="ms-auto btn btn-primary primary-btn-stallion-sm">
+                Back to Admin
+            </a>
+        </div>
+        <hr width="50%" class="me-auto ms-5" style="color: white;">
         <div class="card card-body m-5">
             <table class="table table-sm">
                 <form method="POST" action="{% url 'filter_member' %}">
