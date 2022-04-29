@@ -38,8 +38,7 @@ class EnrollProgram(ModelForm):
         model = MemberPrograms
         fields = ['program']
 
-class EnrollProgram1(forms.Form):
-    name = forms.CharField()
+
 
 # class ReserveField(ModelForm):
 #     class Meta:
@@ -94,6 +93,18 @@ class UpdateCourtsForm(ModelForm):
     class Meta:
         model = Court
         fields = ['name', 'image_url']
+
+
+class FilterEventsForm(forms.Form):
+    name = forms.CharField(required=False)
+    datetime = forms.DateTimeField(required=False)
+    location = forms.CharField(required=False)
+
+
+class UpdateEventsForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ['name', 'datetime', 'location', 'description']
 
 
 

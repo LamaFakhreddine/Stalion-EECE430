@@ -13,7 +13,7 @@ urlpatterns = [
     path('reserveinfo/', views.reserveinfo, name="reserveinfo"),
     path('buytickets/', views.buytickets, name="buytickets"),
     path('enroll/', views.enroll, name="enroll"),
-    # path('reservation/', views.reservation, name="reservation"),
+    path('reservation/', views.reservation, name="reservation"),
 
     path('login/', views.loginPage, name="login"),
     path('signup/', views.signup, name="signup"),
@@ -49,7 +49,14 @@ urlpatterns = [
     path('filter_courts/', views.filter_courts, name='filter_courts'),
     path('update_courts/<str:m>', views.update_courts, name='update_courts'),
     path('save_updates4/', views.save_updates4, name='save_updates4'),
-    path('add_courts/', views.add_courts, name='add_courts')
+    path('add_courts/', views.add_courts, name='add_courts'),
+
+    path('events_admin/', views.events_admin, name='events_admin'),
+    path('delete_events/<str:m>', views.delete_events, name='delete_events'),
+    path('filter_events/', views.filter_events, name='filter_events'),
+    path('update_events/<str:m>', views.update_events, name='update_events'),
+    path('save_updates5/', views.save_updates5, name='save_updates5'),
+    path('add_events/', views.add_events, name='add_events')
 
     
 

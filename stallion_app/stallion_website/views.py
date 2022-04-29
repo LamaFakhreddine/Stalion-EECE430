@@ -79,9 +79,9 @@ def programs(request):
 def programinfo(request):
     programs_list = Program.objects.all()
     form = EnrollProgram(request.POST)
-    form1 = EnrollProgram1(request.POST)
+    u = request.user
     return render(request, 'stallion_website/programinfo.html', 
-    {'programs_list' : programs_list, 'form': form, 'form1': form1})
+    {'programs_list' : programs_list, 'form': form, 'u': u})
 
 def reserve(request):
     courts_list = Court.objects.all()
@@ -277,9 +277,7 @@ def save_updates(request):
 def enroll(request):
     form = EnrollProgram(request.POST)
     form1 = EnrollProgram1(request.POST)
-    print(form1['name'].value())
     if request.method == 'POST':
-        print("im here")
         m = Member.objects.get(name=form1['name'].value())
         p = Program.objects.get(id=form['program'].value())
         MemberPrograms.objects.create(
@@ -289,26 +287,26 @@ def enroll(request):
 
         return render(request, 'stallion_website/index.html')
 
-# def reservation(request):
-#     form = ReserveField(request.POST)
-#     form1 = ReserveField1(request.POST)
-#     print(form1['name'].value())
-#     if request.method == 'POST':
-#         print("im here")
-#         m = Member.objects.get(name=form1['name'].value())
-#         c = Court.objects.get(id=form['court'].value())
-#         rd = Court.objects.get(id=form['reservation_date'].value())
-#         s = Court.objects.get(id=form['start_time'].value())
-#         e = Court.objects.get(id=form['end_time'].value())
-#         CourtReservations.objects.create(
-#             member = m,
-#             court = c,
-#             reservation_date=rd,
-#             start_time=s,
-#             end_time=e
-#         )
+def reservation(request):
+    form = ReserveField(request.POST)
+    form1 = ReserveField1(request.POST)
+    print(form1['name'].value())
+    if request.method == 'POST':
+        print("im here")
+        m = Member.objects.get(name=form1['name'].value())
+        c = Court.objects.get(id=form['court'].value())
+        rd = Court.objects.get(id=form['reservation_date'].value())
+        s = Court.objects.get(id=form['start_time'].value())
+        e = Court.objects.get(id=form['end_time'].value())
+        CourtReservations.objects.create(
+            member = m,
+            court = c,
+            reservation_date=rd,
+            start_time=s,
+            end_time=e
+        )
 
-#         return render(request, 'stallion_website/index.html')
+        return render(request, 'stallion_website/index.html')
 
 
 
@@ -495,6 +493,64 @@ def add_courts(request):
             Court.objects.create(name=form['name'].value(), image_url=form['image_url'].value())
             courts = Court.objects.all()
             return redirect('/courts', {'courts': courts, 'form': form})
+
+
+def events_admin(request):
+    events = Event.objects.all()
+    form = FilterEventsForm(request.POST)
+
+    return render(request, 'stallion_website/events-admin.html', {'events': events, 'form': form})
+
+
+def delete_events(request, m):
+    Event.objects.get(name=m).delete()
+    events = Event.objects.all()
+        
+    return redirect('/events_admin', {'events': events})
+
+
+def filter_events(request):
+    form = FilterEventsForm(request.POST)
+    events = Event.objects.all()
+
+    if form.data['name']:
+        events = events.filter(name=form["name"].value())
+    if form.data['datetime']:
+        events = events.filter(datetime=form["datetime"].value())
+    if form.data['location']:
+        events = events.filter(location=form["location"].value())
+
+    form = FilterEventsForm()
+    return render(request, 'stallion_website/events-admin.html', {'events': events, 'form': form})
+
+
+def update_events(request, m):
+    events = Event.objects.get(name=m)
+    form = UpdateEventsForm(initial={'name': getattr(events, 'name'),'datetime': getattr(events, 'datetime'), 'location': getattr(events, 'location'), 'description': getattr(events, 'description')})
+    return render(request, 'stallion_website/updateEvents.html', {'form': form, 'm': m})
+
+
+def save_updates5(request):  
+    events = Event.objects.all()
+    form = UpdateEventsForm(request.POST)
+    p = Event.objects.get(name=form['name'].value())
+    form1 = UpdateEventsForm(request.POST, instance=p)
+
+    if form1.is_valid():                                                 
+        form1.save()  
+
+    form = UpdateEventsForm()                                                       
+    return render(request, 'stallion_website/events-admin.html', {'events': events, 'form': form})
+
+def add_events(request):
+    form = UpdateEventsForm(request.POST)
+    if request.method == "GET":
+        return render(request, 'stallion_website/addEvents.html', {'form': form})
+    else:
+        if form.is_valid():
+            Event.objects.create(name=form['name'].value(), datetime=form['datetime'].value(), location=form['location'].value(), description=form['description'].value())
+            events = Event.objects.all()
+            return redirect('/events_admin', {'events': events, 'form': form})
 
 
 

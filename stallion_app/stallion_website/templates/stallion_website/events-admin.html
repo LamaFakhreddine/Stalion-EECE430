@@ -47,14 +47,12 @@
         <hr width="50%" class="me-auto m-5" style="color: white;">
         <div class="card card-body m-5">
             <table class="table table-sm p-4">
-                <form method="POST" action="{% url 'filter_programs' %}">
+                <form method="POST" action="{% url 'filter_events' %}">
                     {% csrf_token %}
                 <tr>
                     <th>Name</th>
-                    <th>Coach</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Price</th>
+                    <th>Datetime</th>
+                    <th>Location</th>
                     <th></th>
                 </tr>
                 <td>
@@ -64,27 +62,14 @@
                 </td>
                 <td>
                     <div class="form-floating mt-2 mb-2">
-                        {{form.coach}}
+                        {{form.datetime}}
                     </div>
                 </td>
                 <td>
                     <div class="form-floating mt-2 mb-2">
-                        {{form.start_time}}   
+                        {{form.location}}   
                     </div>
 
-                </td>
-                <td>
-                    <div class="form-floating mt-2 mb-2">
-                        {{form.end_time}}
-                        
-                    </div>
-                    
-                </td>
-                <td>
-                    <div class="form-floating mt-2 mb-2">
-                        {{form.price}}
-                        
-                    </div>
                 </td>
                 <td>
                     <input class="btn btn-sm btn-danger mt-2 mb-2" type="submit" value="Filter"></input>
@@ -95,30 +80,26 @@
             </table>
         <div class="card card-body">
             <div class="d-flex align-items-center">
-                <h5 class="pt-3 pb-3" style="color: var(--darkorange);">Total: {{programs.count}}</h5>
-                <a class="text-light btn btn-sm btn-warning  ms-auto" style="height:fit-content; background-color: var(--darkorange);" href="{% url 'add_programs' %}">Add</a>
+                <h5 class="pt-3 pb-3" style="color: var(--darkorange);">Total: {{events.count}}</h5>
+                <a class="text-light btn btn-sm btn-warning  ms-auto" style="height:fit-content; background-color: var(--darkorange);" href="{% url 'add_events' %}">Add</a>
             </div>
             <table class="table table-sm">
                 <tr>
                     <th>Name</th>
-                    <th>Coach</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Price</th>
-                    <th>Image URL</th>
+                    <th>Datetime</th>
+                    <th>Location</th>
+                    <th>Description</th>
                     <th>Update</th>
                     <th>Remove</th>
                 </tr>
-                {% for p in programs %}
+                {% for e in events %}
                 <tr>
-                    <td>{{p.name}}</td>
-                    <td>{{p.coach}}</td>
-                    <td>{{p.start_time}}</td>
-                    <td>{{p.end_time}}</td>
-                    <td>{{p.price}}</td>
-                    <td>{{p.image_url}}</td>
-                    <td><a class="btn btn-sm btn-info" href="{% url 'update_programs' p.name %}">Update</a></td>
-                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_programs' p.name %}">Delete</a></td>
+                    <td>{{e.name}}</td>
+                    <td>{{e.datetime}}</td>
+                    <td>{{e.location}}</td>
+                    <td>{{e.description}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'update_events' e.name %}">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_events' e.name %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </table>

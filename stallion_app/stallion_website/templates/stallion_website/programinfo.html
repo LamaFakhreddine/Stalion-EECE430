@@ -37,8 +37,10 @@
       <div class="middle">
           <form class="form" align="center" style="margin-top: 150px; padding-top: 50px;" action="{% url 'enroll' %}" method="POST">
             {% csrf_token %}
-                <label>Username</label> {{form1.name}}
+                <p>Select a program and you will be registered in our system</p>
+                <label>Username</label> {{u}}
                 <br><label>Select a Program</label>{{form.program}}</br>
+                <p>All payments must be made in the club</p>
               <input
                 type="submit"
                 class="btn btn-sm btn-danger mt-2 mb-2"
