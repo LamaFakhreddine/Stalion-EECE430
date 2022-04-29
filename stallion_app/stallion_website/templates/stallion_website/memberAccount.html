@@ -49,154 +49,185 @@
         <section class="py-5 text-center container">
           <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-              <h1 class="fw-light" style="color:orange">Member Name</h1>
-              <p class="lead text-muted">Welcome to Stallion Sports Club, Member Name!</p>
+              <h1 style="color:orange"> {{request.user}} </h1>
+              <p class="lead text-muted">Welcome to Stallion Sports Club, {{request.user}} !</p>
             </div>
           </div>
         </section>
    
-        <section class="fees" style="background-color:#F8F8F8">
+        
+       
+
+        <section class="py-5 text-center container">
           <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
+              
               <h1 class="fw-light" style="color:orange">Fees Due:</h1>
-              <p class="lead text-muted">100,000 LBP</p>
+              <h1 id="fees" class="fw-light" style="color:orange"></h1>
+              
+
+              <!-- Calculating the fees due, make a var w/ all prices in html -->
+
+              <script>
+                var X = 0;
+              </script>
+
+              {% for prog in memberProgs %}
+              <script>
+                X = X + prog.program.price;
+              </script>
+              {% endfor %}
+
+              {% for tick in memberEventsTick %}
+              <script>
+                X = X + tick.ticket.price;
+              </script>
+              {% endfor %}
+
+              <script>
+                document.getElementById("fees").innerHTML = X;
+              </script>
+
+              <!--
+              <script>
+              
+                var myHTML = 0;
+                  
+                
+              
+                document.getElementById("fees").innerHTML = (myHTML).toString(10);
+              
+              </script>
+              -->
+
+              <p class="lead text-muted">*price excludes court reservations as reservation prices are not fixed</p>
+
             </div>
           </div>
         </section>
+
  
+        
+        <!--
+
         <br></br>
         <h1 class="fw-light" style="color:orange">Your Schedule:</h1>
         <br></br>
-        {% include 'stallion_website/calendar.html' %}
+
+        {% include 'stallion_website/calendar.html' %} 
+       -->
+
 
         <div class="album py-5 bg-light">
           <div class="container">
 
-            <br></br>
-            <h1 class="fw-light" style="color:orange">Events and Programs Booked:</h1>
-            <br></br>
+            
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class = "programs">
+              <br></br>
+              <h1 class="fw-light" style="color:orange">Programs Booked:</h1>
+              <br></br>
+  
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
+                {% for prog in memberProgs %}
+
+                <div class="col">
+                  <div class="card shadow-sm">
+                    
+                    <div class="card-body">
+                      <p id = "name" class="card-text">Name: {{prog.program.name}} </p>
+                      <p id = "coach" class="card-text">Coach: {{prog.program.coach.name}} </p>
+                      <p id = "start" class="card-text">Start Time: {{prog.program.start_time}} </p>
+                      <p id = "end" class="card-text">End Time: {{prog.program.end_time}} </p>
+                      <p id = "price" class="card-text">Price: {{prog.program.price}} </p>
+                      
+                    </div>
                   </div>
                 </div>
+
+                {% endfor %}
+
+
+                
+
               </div>
+            </div>
+          </div>
+        </div>
 
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
+
+        <div class="album py-5 bg-light">
+          <div class="container">
+
+
+            <div class = "events">
+              <br></br>
+              <h1 class="fw-light" style="color:orange">Events Booked:</h1>
+              <br></br>
+  
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                {% for tick in memberEventsTick %}
+
+                <div class="col">
+                  <div class="card shadow-sm">
+                    
+                    <div class="card-body">
+                      <label for = "name2" class="card-text"> </label>
+                      <p id="name2" class="card-text">Name: {{tick.event.name}} </p>
+                      <p id="date2" class="card-text">Date: {{tick.event.datetime}} </p>
+                      <p id="loc" class="card-text">Location: {{tick.event.location}} </p>
+                      <!--<p id="ticketType" class="card-text">Ticket Type: {{tick.ticket.TICKET_TYPE}} </p>-->
+                      <p id="ticketPrice" class="card-text">Ticket Price: {{tick.ticket.price}} </p>
+                      <p id="desc" class="card-text">Description: {{tick.event.description}} </p>
+                    </div>
                   </div>
 
                 </div>
+
+                {% endfor %}
+  
+                
+                
               </div>
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            </div>
+          </div>
+        </div>
 
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
+
+
+        <div class="album py-5 bg-light">
+          <div class="container">
+
+
+            <div class = "courts">
+              <br></br>
+              <h1 class="fw-light" style="color:orange">Courts Booked:</h1>
+              <br></br>
+  
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                
+  
+                {% for res in memberReservations %}
+
+                <div class="col">
+                  <div class="card shadow-sm">
+  
+                    <div class="card-body">
+                      <p id = "name2" class="card-text">Name: {{res.court.name}} </p>
+                      <p id = "resDate" class="card-text">Reservation Date: {{res.reservation_date}} </p>
+                      <p id = "startTime" class="card-text">Start Time: {{res.start_time}} </p>
+                      <p id = "endTime" class="card-text">End Time: {{res.end_time}} </p>
+
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                {% endfor %}
 
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                  <div class="card-body">
-                    <p class="card-text">Event: </p>
-                    <p class="card-text">Date: </p>
-                    <p class="card-text">Time: </p>
-                    <p class="card-text">Coach: </p>
-                    <p class="card-text">Area: </p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
