@@ -63,43 +63,8 @@
             <div class="col-lg-6 col-md-8 mx-auto">
               
               <h1 class="fw-light" style="color:orange">Fees Due:</h1>
-              <h1 id="fees" class="fw-light" style="color:orange"></h1>
-              
-
-              <!-- Calculating the fees due, make a var w/ all prices in html -->
-
-              <script>
-                var X = 0;
-              </script>
-
-              {% for prog in memberProgs %}
-              <script>
-                X = X + prog.program.price;
-              </script>
-              {% endfor %}
-
-              {% for tick in memberEventsTick %}
-              <script>
-                X = X + tick.ticket.price;
-              </script>
-              {% endfor %}
-
-              <script>
-                document.getElementById("fees").innerHTML = X;
-              </script>
-
-              <!--
-              <script>
-              
-                var myHTML = 0;
-                  
-                
-              
-                document.getElementById("fees").innerHTML = (myHTML).toString(10);
-              
-              </script>
-              -->
-
+              <h1 id="fees" class="fw-light" style="color:orange">{{X}}</h1>
+            
               <p class="lead text-muted">*price excludes court reservations as reservation prices are not fixed</p>
 
             </div>

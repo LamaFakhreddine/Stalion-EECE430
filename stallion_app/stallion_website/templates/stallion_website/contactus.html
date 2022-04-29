@@ -187,73 +187,20 @@
 
         <!-- 2 rows of 3 coaches -->
         <div class="row">
-            <div class="col-lg-4">
 
-                <img class = "center" src="{% static '/images/rita.jfif' %}"></img>
-    
-                <h2>Angela Moss</h2>
-    
-                <h4>Specialty: Football</h4>
-                <h5>Email: Angela@mail.stallion.com</h5>
-            </div><!-- /.col-lg-4 -->
+          {% for coach in coaches %}
 
             <div class="col-lg-4">
 
-                <img class = "center" src="{% static '/images/rita.jfif' %}"></img>
+                <h2 style = "color:orange">{{coach.name}}</h2>
     
-                <h2>Jane Doe</h2>
-    
-                <h4>Specialty: Swimming</h4>
-                <h5>Email: Jane@mail.stallion.com</h5>
-
+                <h4>Specialty: {{coach.specialty}}</h4>
+                <h5>Email: {{coach.email}}</h5>
+                <h5>Number: {{coach.phone_number}}</h5>
             </div><!-- /.col-lg-4 -->
 
-            <div class="col-lg-4">
+            {% endfor %}
 
-               <img class = "center" src="{% static '/images/rita.jfif' %}"></img>
-    
-                <h2>Tony Stark</h2>
-    
-                <h4>Specialty: Boxing</h4>
-                <h5>Email: Tony@mail.stallion.com</h5>
-
-            </div><!-- /.col-lg-4 -->
-           
-        </div><!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-4">
-
-               <img class = "center" src="{% static '/images/rita.jfif' %}"></img>
-    
-                <h2>Natasha Romanov</h2>
-    
-                <h4>Specialty: Basketball</h4>
-                <h5>Email: Natasha@mail.stallion.com</h5>
-
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-lg-4">
-
-                <img class = "center" src="{% static '/images/rita.jfif' %}"></img>
-    
-                <h2>Sam Reiss</h2>
-    
-                <h4>Specialty: Volleyball</h4>
-                <h5>Email: Sam@mail.stallion.com</h5>
-
-            </div><!-- /.col-lg-4 -->
-
-            <div class="col-lg-4">
-
-                <img class = "center" src="{% static '/images/rita.jfif' %}"></img>
-    
-                <h2>Elliot Malek</h2>
-    
-                <h4>Specialty: Tennis</h4>
-                <h5>Email: Elliot@mail.stallion.com</h5>
-
-            </div><!-- /.col-lg-4 -->
            
         </div><!-- /.row -->
 

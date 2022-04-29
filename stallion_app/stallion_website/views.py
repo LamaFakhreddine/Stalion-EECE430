@@ -37,6 +37,7 @@ def home(request):
 def events(request):
     # get all events whose date has not passed yet 
     today = datetime.today()
+    print("ALL EVENTS", Event.objects.all())
     events = Event.objects.filter(datetime__gt = today).order_by('datetime')
     next_event = None
     # if no events exist, pass null
@@ -163,8 +164,14 @@ def member(request):
     memberProgs = (MemberPrograms.objects.filter(member=Member.objects.get(user=request.user))).all()
     memberEventsTick = (EventTicket.objects.filter(member=Member.objects.get(user=request.user))).all()
     memberReservations = (CourtReservations.objects.filter(member=Member.objects.get(user=request.user))).all()
-    return render(request, 'stallion_website/memberAccount.html', {'memberProgs': memberProgs, 'memberEventsTick':memberEventsTick, 'memberReservations':memberReservations})
+    
+    X = 0
+    for prog in memberProgs:
+        X = X + prog.program.price
+    for tick in memberEventsTick:
+        X = X + tick.ticket.price
 
+    return render(request, 'stallion_website/memberAccount.html', {'memberProgs': memberProgs, 'memberEventsTick':memberEventsTick, 'memberReservations':memberReservations, 'X':X})
 
 @login_required(login_url='home')
 @allowed_users(allowed_roles=['coach'])
@@ -189,8 +196,8 @@ def profile(request):
         return redirect('home')
 
 def contact(request):
-    return render(request, 'stallion_website/contactus.html')
-
+    coaches = Coach.objects.all()
+    return render(request, 'stallion_website/contactus.html', {'coaches':coaches})
 
 def members(request):
     members = Member.objects.all()
@@ -531,6 +538,43 @@ def add_events(request):
             events = Event.objects.all()
             return redirect('/events_admin', {'events': events, 'form': form})
 
+def tickets_admin(request):
+    tickets = Ticket.objects.all()
+    form = FilterTicketsForm(request.POST)
+    return render(request, 'stallion_website/tickets-admin.html', {'tickets': tickets, 'form': form})
+
+
+def delete_tickets(request, id):
+    Ticket.objects.get(id=id).delete()
+    tickets = Ticket.objects.all()
+    return redirect('/tickets', {'tickets': tickets})
+
+
+def filter_tickets(request):
+    form = FilterEventsForm(request.POST)
+    events = Event.objects.all()
+
+    if form.data['name']:
+        events = events.filter(name=form["name"].value())
+    if form.data['datetime']:
+        events = events.filter(datetime=form["datetime"].value())
+    if form.data['location']:
+        events = events.filter(location=form["location"].value())
+
+    form = FilterEventsForm()
+    return render(request, 'stallion_website/events-admin.html', {'events': events, 'form': form})
+
+
+
+def add_tickets(request):
+    form = UpdateTicketsForm(request.POST)
+    if request.method == "GET":
+        return render(request, 'stallion_website/addTickets.html', {'form': form})
+    else:
+        if form.is_valid():
+            Ticket.objects.create(ticket=form['ticket'].value(), price=form['price'].value())
+            tickets = Ticket.objects.all()
+            return redirect('/tickets', {'tickets': tickets, 'form': form})
 
 
 

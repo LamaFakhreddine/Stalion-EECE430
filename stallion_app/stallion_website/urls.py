@@ -54,7 +54,12 @@ urlpatterns = [
     path('filter_events/', views.filter_events, name='filter_events'),
     path('update_events/<str:m>', views.update_events, name='update_events'),
     path('save_updates5/', views.save_updates5, name='save_updates5'),
-    path('add_events/', views.add_events, name='add_events')
+    path('add_events/', views.add_events, name='add_events'),
+
+    path('tickets/', views.tickets_admin, name='tickets'),
+    path('delete_tickets/<str:id>', views.delete_tickets, name='delete_tickets'),
+    path('filter_tickets/', views.filter_tickets, name='filter_tickets'),
+    path('add_tickets/', views.add_tickets, name='add_tickets')
 
     
 

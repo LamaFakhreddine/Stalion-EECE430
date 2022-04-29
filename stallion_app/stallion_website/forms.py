@@ -1,3 +1,5 @@
+from pyexpat import model
+from random import choices
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
@@ -38,15 +40,25 @@ class EnrollProgram(ModelForm):
         model = MemberPrograms
         fields = ['program']
 
+class FilterTicketsForm(forms.Form):
+    TICKET_TYPE = (
+        ('Area A ($100)', 'Area A ($100)'),
+        ('Area B ($75)', 'Area B ($75)'),
+        ('Area C ($50)', 'Area C ($50)')
+    )
+    ticket = forms.ChoiceField(choices=TICKET_TYPE)   
+    price = forms.IntegerField()
 
 
-# class ReserveField(ModelForm):
-#     class Meta:
-#         model = CourtReservations
-#         fields = ['court']
+class UpdateTicketsForm(ModelForm):
+    class Meta:
+        model = Ticket
+        fields = ['ticket', 'price']
 
-# class ReserveField1(forms.Form):
-#     name = forms.CharField()
+class UpdateTicketForm1(ModelForm):
+    class Meta:
+        model = Ticket
+        fields = ['id']
 
 class FilterCoachesForm(forms.Form):
     name = forms.CharField(required=False)

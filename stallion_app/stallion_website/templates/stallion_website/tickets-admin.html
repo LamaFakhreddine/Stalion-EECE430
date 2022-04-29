@@ -44,7 +44,7 @@
 
     <div class="col-md-11 mx-auto">
         <div class="d-flex m-5 align-items-center">
-            <h5 class="text-light">LIST OF STALLION EVENTS</h5>
+            <h5 class="text-light">LIST OF STALLION TICKETS</h5>
             <a href="/adminAccount" type="button" class="ms-auto btn btn-primary primary-btn-stallion-sm">
                 Back to Admin
             </a>
@@ -55,29 +55,19 @@
                 <form method="POST" action="{% url 'filter_events' %}">
                     {% csrf_token %}
                 <tr>
-                    <th>Name</th>
-                    <th>Datetime</th>
-                    <th>Location</th>
+                    <th>ticket</th>
+                    <th>price</th>
                     <th></th>
                 </tr>
                 <td>
                     <div class="form-floating mt-2 mb-2">
-                        {{form.name}}
+                        {{form.ticket}}
                       </div>
                 </td>
                 <td>
                     <div class="form-floating mt-2 mb-2">
-                        {{form.datetime}}
+                        {{form.price}}
                     </div>
-                </td>
-                <td>
-                    <div class="form-floating mt-2 mb-2">
-                        {{form.location}}   
-                    </div>
-
-                </td>
-                <td>
-                    <input class="btn btn-sm btn-danger mt-2 mb-2" type="submit" value="Filter"></input>
                 </td>
             </form>
 
@@ -86,25 +76,19 @@
         <div class="card card-body">
             <div class="d-flex align-items-center">
                 <h5 class="pt-3 pb-3" style="color: var(--darkorange);">Total: {{events.count}}</h5>
-                <a class="text-light btn btn-sm btn-warning  ms-auto" style="height:fit-content; background-color: var(--darkorange);" href="{% url 'add_events' %}">Add</a>
+                <a class="text-light btn btn-sm btn-warning  ms-auto" style="height:fit-content; background-color: var(--darkorange);" href="{% url 'add_tickets' %}">Add</a>
             </div>
             <table class="table table-sm">
                 <tr>
-                    <th>Name</th>
-                    <th>Datetime</th>
-                    <th>Location</th>
-                    <th>Description</th>
-                    <th>Update</th>
+                    <th>Ticket</th>
+                    <th>Price</th>
                     <th>Remove</th>
                 </tr>
-                {% for e in events %}
+                {% for t in tickets %}
                 <tr>
-                    <td>{{e.name}}</td>
-                    <td>{{e.datetime}}</td>
-                    <td>{{e.location}}</td>
-                    <td>{{e.description}}</td>
-                    <td><a class="btn btn-sm btn-info" href="{% url 'update_events' e.name %}">Update</a></td>
-                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_events' e.name %}">Delete</a></td>
+                    <td>{{t.ticket}}</td>
+                    <td>{{t.price}}</td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_tickets' t.id %}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </table>
