@@ -43,7 +43,7 @@
     <!-- Button trigger modal -->
 
     <div class="col-md-11 mx-auto">
-        <h5 class="text-light m-5">LIST OF STALLION PROGRAMS</h5>
+        <h5 class="text-light m-5">LIST OF STALLION COURTS</h5>
         <hr width="50%" class="me-auto m-5" style="color: white;">
         <div class="card card-body m-5">
             <table class="table table-sm p-4">
@@ -80,7 +80,7 @@
                 {% for c in courts %}
                 <tr>
                     <td>{{c.name}}</td>
-                    <td>{{c.image_url}}</td>
+                    <td style="max-width:60vh">{{c.image_url}}</td>
                     <td><a class="btn btn-sm btn-info" href="{% url 'update_courts' c.name %}">Update</a></td>
                     <td><a class="btn btn-sm btn-danger" href="{% url 'delete_courts' c.name %}">Delete</a></td>
                 </tr>

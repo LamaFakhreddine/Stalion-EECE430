@@ -116,7 +116,7 @@
                     <td>{{p.start_time}}</td>
                     <td>{{p.end_time}}</td>
                     <td>{{p.price}}</td>
-                    <td>{{p.image_url}}</td>
+                    <td style="max-width:60vh">{{p.image_url}}</td>
                     <td><a class="btn btn-sm btn-info" href="{% url 'update_programs' p.name %}">Update</a></td>
                     <td><a class="btn btn-sm btn-danger" href="{% url 'delete_programs' p.name %}">Delete</a></td>
                 </tr>
