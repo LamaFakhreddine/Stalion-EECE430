@@ -45,8 +45,12 @@ pip install -r requirements.txt
  So far, you are able to successfully load the website. However, one cruical step remains in order to aid with the authentication of the user. 
  
  1- open http://localhost:8000/admin to access django admin panel
+ 
  2- login with your admin superuser credentials. 
+ 
  3- Navigate to Groups and check if admin, member, and coach are added to the groups. If not, add the mentioned groups
+ 
+ 4- To Navigate to our Admin account, use http://localhost:8000/adminAccount. The adminAccount is the page you will be using to manipulate the models. 
  
  CONGRATULATIONS! You can now have fun with Stallion! 
 
