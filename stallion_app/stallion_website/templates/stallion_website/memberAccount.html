@@ -201,35 +201,6 @@
         <div class="album py-5 bg-light">
           <div class="container">
 
-
-            <div class = "courts">
-              <br></br>
-              <h1 class="fw-light" style="color:orange">Courts Booked:</h1>
-              <br></br>
-  
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                
-  
-                {% for res in memberReservations %}
-
-                <div class="col">
-                  <div class="card shadow-sm">
-  
-                    <div class="card-body">
-                      <p id = "name2" class="card-text">Name: {{res.court.name}} </p>
-                      <p id = "resDate" class="card-text">Reservation Date: {{res.reservation_date}} </p>
-                      <p id = "startTime" class="card-text">Start Time: {{res.start_time}} </p>
-                      <p id = "endTime" class="card-text">End Time: {{res.end_time}} </p>
-
-                    </div>
-                  </div>
-                </div>
-
-                {% endfor %}
-
-
-              </div>
-            </div>
           </div>
         </div>
 

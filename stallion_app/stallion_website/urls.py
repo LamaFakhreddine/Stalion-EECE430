@@ -10,10 +10,8 @@ urlpatterns = [
     path('programs/', views.programs, name="programs"),
     path('programinfo/', views.programinfo, name="programinfo"),
     path('courtsStallion/', views.reserve, name="courtsStallion"),
-    # path('reserveinfo/', views.reserveinfo, name="reserveinfo"),
     path('buytickets/<str:pk_test>', views.buytickets, name="buytickets"),
     path('enroll/', views.enroll, name="enroll"),
-    path('reservation/', views.reservation, name="reservation"),
 
     path('login/', views.loginPage, name="login"),
     path('signup/', views.signup, name="signup"),

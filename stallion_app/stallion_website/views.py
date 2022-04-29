@@ -279,9 +279,9 @@ def save_updates(request):
 
 def enroll(request):
     form = EnrollProgram(request.POST)
-    form1 = EnrollProgram1(request.POST)
     if request.method == 'POST':
-        m = Member.objects.get(name=form1['name'].value())
+        u = request.user
+        m = Member.objects.get(id=u.id)        
         p = Program.objects.get(id=form['program'].value())
         MemberPrograms.objects.create(
             member = m,
@@ -289,30 +289,6 @@ def enroll(request):
         )
 
         return render(request, 'stallion_website/index.html')
-
-def reservation(request):
-    form = ReserveField(request.POST)
-    form1 = ReserveField1(request.POST)
-    print(form1['name'].value())
-    if request.method == 'POST':
-        print("im here")
-        m = Member.objects.get(name=form1['name'].value())
-        c = Court.objects.get(id=form['court'].value())
-        rd = Court.objects.get(id=form['reservation_date'].value())
-        s = Court.objects.get(id=form['start_time'].value())
-        e = Court.objects.get(id=form['end_time'].value())
-        CourtReservations.objects.create(
-            member = m,
-            court = c,
-            reservation_date=rd,
-            start_time=s,
-            end_time=e
-        )
-
-        return render(request, 'stallion_website/index.html')
-
-
-
 
 
 def coaches(request):
