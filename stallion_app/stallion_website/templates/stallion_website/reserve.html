@@ -31,28 +31,26 @@
   <body class="d-flex flex-column min-vh-100">
     {% include 'stallion_website/navbar.html' %}
 
-    <!-- Fields Main -->
-    <section id="fieldMain" class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="sportsimg">
-          
-          <img
-              width=100%
-              src="{% static '/images/basketball.jpg' %}"
-              class="d-block w-100"
-              alt="..."
-            />
-            <!-- <a
-              type="button"
-              class="btn btn-primary primary-btn-stallion"
-              width="175px"
-              style="margin-right: 1.5rem; margin-left:450px;"
-            >
-            View Fields and Courts
-            </a> -->
-        </div>
-      </div>
-    </section>
+        <!-- Bootstrap Carousel -->
+        <section>
+          <div id="heroCarousel" class="carousel">     
+            <div class="carousel-inner">
+              <img
+                src="{% static '/images/basketball.jpg' %}"
+                class="d-block w-100"
+                alt="Player jpg"
+              />
+              <div class="carousel-caption col-10 mx-auto text-center">
+                <h5 >Get the Full Athlete Experience!</h5>
+                <p>
+                  Our fields are designed with the state-of-the-art technology,
+                  making them modern and accomodating to the needs of sports.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
     <!-- Fields and Courts -->
         <!-- Programs Section -->
@@ -64,7 +62,7 @@
                 Our facilities include a variety of courts and fields that are at the disposal of our loyal members. Check them out below!
               </p>
                 
-            <div class="col-10 mx-auto">
+            <div class="col-12 mx-auto">
               <div class="card-group">
                 {% for court in courts_list %}
                 <div class="card program-card m-3" style="height: fit-content;">
